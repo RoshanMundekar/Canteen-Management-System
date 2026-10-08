@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Modern Canteen</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../static/visitorsapp/css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="../../static/visitorsapp/css/animate.css">
+
+  <link rel="stylesheet" href="../../static/visitorsapp/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../../static/visitorsapp/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../../static/visitorsapp/css/magnific-popup.css">
+
+  <link rel="stylesheet" href="../../static/visitorsapp/css/aos.css">
+
+  <link rel="stylesheet" href="../../static/visitorsapp/css/ionicons.min.css">
+
+  <link rel="stylesheet" href="../../static/visitorsapp/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="../../static/visitorsapp/css/jquery.timepicker.css">
+
+
+  <link rel="stylesheet" href="../../static/visitorsapp/css/flaticon.css">
+  <link rel="stylesheet" href="../../static/visitorsapp/css/icomoon.css">
+  <link rel="stylesheet" href="../../static/visitorsapp/css/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <img src="../../static/canteenStaff/images/moderncollege.jpg" width="100" height="80" alt="">
+			<a class="navbar-brand" href="/visitorindex"> Modern<small> Canteen</small></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a href="/visitorindex" class="nav-link">Home</a></li>
+					<li class="nav-item"><a href="/visitormenu" class="nav-link">Menu</a></li>
+					<li class="nav-item"><a href="/visitorinvoicehistory" class="nav-link">My Orders</a></li>
+					<li class="nav-item"><a href="/visitorfeedback" class="nav-link">Feedback</a></li>
+					<li class="nav-item cart"><a href="/visitorcartdata" class="nav-link"><span
+								class="icon icon-shopping_cart"></span><span
+								class="bag d-flex justify-content-center align-items-center"><small>{{cartcount}}</small></span></a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							<h3><span class="icon icon-user"></span></h3>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+							<li class="nav-item"><a href="#" class="nav-link">{{usrempno}}</a></li>
+							<li class="nav-item"><a href="/visitorprofile" class="nav-link">Profile</a></li>
+							<li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+      </div>
+    </div>
+  </nav>
+  <!-- END nav -->
+
+  <br><br><br>
+  <br><br><br>
+
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-8 ftco-animate">
+          <form action="/visitorplaceorder" method="post" class="billing-form ftco-bg-dark p-3 p-md-5">
+            {% csrf_token %}
+            <h3 class="mb-4 billing-heading">Billing Details</h3>
+            <div class="row align-items-end">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="firstname">Firt Name</label>
+                  <input type="text" name="Fname" class="form-control" placeholder="First Name" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="lastname">Last Name</label>
+                  <input type="text" name="Lname" class="form-control" placeholder="Last Name" required>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="text" name="phoneno" class="form-control" minlength="10" maxlength="10"
+                    placeholder="Enter phone no" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="emailaddress">Email Id</label>
+                  <input type="email" name="Uemail" class="form-control" placeholder="Enter Email id" required>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="row mt-5 pt-3 d-flex">
+              <div class="col-md-6 d-flex">
+                <div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
+                  <h3 class="billing-heading mb-4">Cart Total</h3>
+                  <p class="d-flex">
+                    <span>Subtotal</span>
+                    <span>{{dishPrice}}</span>
+                  </p>
+                  <hr>
+                  <p class="d-flex total-price">
+                    <span>Total</span>
+                    <span>{{dishPrice}}</span>
+                  </p>
+                  <button type="submit" class="btn btn-primary">Place an order</button>
+                </div>
+              </div>
+            </div>
+          </form><!-- END -->
+        </div> <!-- .col-md-8 -->
+      </div>
+    </div>
+  </section> <!-- .section -->
+
+  <footer class="ftco-footer ftco-section img" style="padding-bottom: 0rem;">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="ftco-footer-widget mb-4">
+						<a class="navbar-brand" href="/visitorindex">Modern<small>Canteen</small></a>
+						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5"
+							style="margin-left: 20%;">
+							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col">
+					<div class="ftco-footer-widget mb-4 ml-md-4">
+						<h2 class="ftco-heading-2">useful links</h2>
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item active"><a href="/visitorindex" class="nav-link">Home</a></li>
+							<li class="nav-item"><a href="/visitormenu" class="nav-link">Menu</a></li>
+							<li class="nav-item"><a href="/visitorinvoicehistory" class="nav-link">My Orders</a></li>
+							<li class="nav-item"><a href="/visitorfeedback" class="nav-link">Feedback</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<div class="block-23 mb-3">
+							<ul>
+								<li><span class="icon icon-map-marker"></span><span class="text">Modern College of
+										Arts,Science and Commerce Shivajinagar Pune-05</span></li>
+								<li><a href="#"><span class="icon icon-phone"></span><span
+											class="text">9858358823/9730133445/7780001782</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span
+											class="text">vaishnavivaidya129@gmail.com</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span
+											class="text">pragya.january2001@gmail.com</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span
+											class="text">manasvisawant05@gmail.com</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="text-center">
+				<p style="padding-bottom: 0rem;padding-top: 0rem;">
+					Copyright &copy;
+					<script>document.write(new Date().getFullYear());</script> All rights reserved <i
+						class="icon-heart" aria-hidden="true"></i> by <a href="#"
+						target="_blank">By:Modern College Students</a>
+				</p>
+			</div>
+		</div>
+	</footer>
+
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+        stroke="#F96D00" />
+    </svg></div>
+
+
+  <script src="../../static/visitorsapp/js/jquery.min.js"></script>
+  <script src="../../static/visitorsapp/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../../static/visitorsapp/js/popper.min.js"></script>
+  <script src="../../static/visitorsapp/js/bootstrap.min.js"></script>
+  <script src="../../static/visitorsapp/js/jquery.easing.1.3.js"></script>
+  <script src="../../static/visitorsapp/js/jquery.waypoints.min.js"></script>
+  <script src="../../static/visitorsapp/js/jquery.stellar.min.js"></script>
+  <script src="../../static/visitorsapp/js/owl.carousel.min.js"></script>
+  <script src="../../static/visitorsapp/js/jquery.magnific-popup.min.js"></script>
+  <script src="../../static/visitorsapp/js/aos.js"></script>
+  <script src="../../static/visitorsapp/js/jquery.animateNumber.min.js"></script>
+  <script src="../../static/visitorsapp/js/bootstrap-datepicker.js"></script>
+  <script src="../../static/visitorsapp/js/jquery.timepicker.min.js"></script>
+  <script src="../../static/visitorsapp/js/scrollax.min.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="../../static/visitorsapp/js/google-map.js"></script>
+  <script src="../../static/visitorsapp/js/main.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      var quantitiy = 0;
+      $('.quantity-right-plus').click(function (e) {
+
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        var quantity = parseInt($('#quantity').val());
+
+        // If is not undefined
+
+        $('#quantity').val(quantity + 1);
+
+
+        // Increment
+
+      });
+
+      $('.quantity-left-minus').click(function (e) {
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        var quantity = parseInt($('#quantity').val());
+
+        // If is not undefined
+
+        // Increment
+        if (quantity > 0) {
+          $('#quantity').val(quantity - 1);
+        }
+      });
+
+    });
+  </script>
+
+
+</body>
+
+</html>

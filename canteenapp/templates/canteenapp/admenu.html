@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Moder Canteen</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+
+	<link rel="stylesheet" href="../../static/canteenapp/css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="../../static/canteenapp/css/animate.css">
+
+	<link rel="stylesheet" href="../../static/canteenapp/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="../../static/canteenapp/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="../../static/canteenapp/css/magnific-popup.css">
+
+	<link rel="stylesheet" href="../../static/canteenapp/css/aos.css">
+
+	<link rel="stylesheet" href="../../static/canteenapp/css/ionicons.min.css">
+
+	<link rel="stylesheet" href="../../static/canteenapp/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="../../static/canteenapp/css/jquery.timepicker.css">
+
+
+	<link rel="stylesheet" href="../../static/canteenapp/css/flaticon.css">
+	<link rel="stylesheet" href="../../static/canteenapp/css/icomoon.css">
+	<link rel="stylesheet" href="../../static/canteenapp/css/style.css">
+
+
+	<style>
+		input,
+		select,
+		textarea {
+			color: #070707;
+			background-color: #070707;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+		<div class="container">
+			<img src="../../static/canteenapp/images/moderncollege.jpg" width="100" height="80" alt="">
+			<a class="navbar-brand" href="/adindex"> Modern<small> Canteen</small></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a href="/adindex" class="nav-link">Home</a></li>
+					<li class="nav-item"><a href="/admenu" class="nav-link">Menu</a></li>
+					<li class="nav-item"><a href="/addstaff" class="nav-link">Staff</a></li>
+					<li class="nav-item"><a href="/viewfeedback" class="nav-link">Feedback</a></li>
+					<li class="nav-item"><a href="/userinfo" class="nav-link">User Information</a></li>
+					<li class="nav-item"><a href="/userpament" class="nav-link">Payment Details</a></li>
+					<li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+				</ul>
+			</div>
+	</nav>
+	<!-- END nav -->
+
+	<br><br><br><br><br><br><br>
+	<br><br><br>
+
+	<section class="ftco-intro" style="width: 2000px;margin-left: 10%;">
+		<div class="container-wrap">
+			<div class="wrap d-md-flex align-items-xxl-end">
+				<div class="info">
+					<form action="/admenu" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						<h2>Add Dishes</h2>
+						<div class="row no-gutters">
+							<div class="col-md-2 ftco-animate">
+								<div class="text">
+									<h3>Dish Name</h3>
+									<input type="text" name="dishname" class="form-control" placeholder="Dish name"
+										required>
+								</div>
+							</div>
+							<div class="col-md-2 d-flex ftco-animate">
+								<div class="text">
+									<h3>Price</h3>
+									<input type="text" name="dishprice" class="form-control" placeholder="Price"
+										required>
+								</div>
+							</div>
+							<div class="col-md-4 d-flex ftco-animate">
+								<div class="text">
+									<h3>About Dish</h3>
+									<input type="text" name="aboutdish" class="form-control" placeholder="About Dish"
+										required>
+								</div>
+							</div>
+							<div class="col-md-2 d-flex ftco-animate">
+								<div class="text">
+									<h3>Dish Image</h3>
+									<input type="file" name="dishimg" class="form-control" placeholder="About Dish"
+										required>
+								</div>
+							</div>
+							<div class="col-md-2 d-flex ftco-animate">
+								<div class="text">
+									<h3>Category</h3>
+									<select id="inputState" name="dishcategory" class="form-control" required>
+										<option value="" style="color: black;">Choose...</option>
+										<option value="VEG" style="color: black;">VEG</option>
+										<option value="NON-VEG" style="color: black;">NON-VEG</option>
+										<option value="BEVERAGES" style="color: black;">BEVERAGES</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<br>
+						<button type="submit" class="btn btn-success rounded">Submit</button>
+					</form>
+					<br>
+					<form action="/combomenu" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						<h2>Add Combo Offers</h2>
+						<div class="row no-gutters">
+							<div class="col-md-2 d-flex ftco-animate">
+								<div class="text">
+									<h3>Dish 1</h3>
+									<select id="inputState" name="dish1" class="form-control" required>
+										<option value="" style="color: black;">Choose...</option>
+										{% for i in all_menus %}
+										<option value="{{i}}" style="color: black;">{{i}}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+							<div class="col-md-2 d-flex ftco-animate">
+								<div class="text">
+									<h3>Dish 2</h3>
+									<select id="inputState" name="dish2" class="form-control" required>
+										<option value="" style="color: black;">Choose...</option>
+										{% for j in all_menus %}
+										<option value="{{j}}" style="color: black;">{{j}}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4 d-flex ftco-animate">
+								<div class="text">
+									<h3>About Dish</h3>
+									<input type="text" name="aboutdish" class="form-control" placeholder="About Dish"
+										required>
+								</div>
+							</div>
+							<div class="col-md-2 d-flex ftco-animate">
+								<div class="text">
+									<h3>Price</h3>
+									<input type="text" name="comboprice2" class="form-control" placeholder="Price"
+										required>
+								</div>
+							</div>
+						</div>
+						<br>
+						<button type="submit" class="btn btn-success rounded">Submit</button>
+					</form>
+					<br>
+					{% if messages %}
+					<div class="messages">
+						{% for message in messages %}
+						<div class="alert {% if message.tags %}alert-{{ message.tags }}" {% endif %}>
+							{{ message }}
+						</div>
+						{% endfor %}
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+	<br>
+
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 mb-5 pb-3">
+					<h3 class="mb-5 heading-pricing ftco-animate">VEG</h3>
+					{% for Dname1, Dprice1, Dabout1, Dimg1, Dcat1 in data1 %}
+					<div class="pricing-entry d-flex ftco-animate">
+						<div class="img" style="background-image: url(../../../media/{{Dimg1}});"></div>
+						<div class="desc pl-3">
+							<div class="d-flex text align-items-center">
+								<h3><span>{{Dname1}}</span></h3>
+								<span class="price">₹ {{Dprice1}}/-</span>
+							</div>
+							<div class="d-block">
+								<p>{{Dabout1}}</p>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{Dname1}}exampleModal">
+						Edit Dish
+					</button>
+					<br>
+					<div class="modal fade" id="{{Dname1}}exampleModal" tabindex="-1" role="dialog"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel" style="color: black;">VEG</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form action="/admenu2" method="post" enctype="multipart/form-data">
+										{% csrf_token %}
+										<div class="row">
+											<div class="col">
+												<label for="dishname">Dish Name</label>
+												<input type="text" class="form-control" name="dishname2"
+													value="{{Dname1}}" required>
+											</div>
+											<div class="col">
+												<label for="dishprice">Dish Price</label>
+												<input type="text" id="dishprice" name="dishprice2" class="form-control"
+													value="{{Dprice1}}" required>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col">
+												<label for="dishabout">Dish info</label>
+												<input type="text" id="dishabout" name="aboutdish2" class="form-control"
+													value="{{Dabout1}}" required>
+											</div>
+											<div class="col">
+												<label for="dishimg">Dish Image</label>
+												<div class="img"
+													style="background-image: url(../../../media/{{Dimg1}});"></div>
+												<input type="file" id="dishimg" name="dishimg2" class="form-control"
+													required>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												<label for="dishname">Original Dish Name</label>
+												<input type="text" class="form-control" name="dishname"
+													value="{{Dname1}}" readonly>
+											</div>
+											<div class="col">
+												<label for="dishabout">Dish Category</label>
+												<input type="text" id="dishabout" name="dishcategory2"
+													class="form-control" value="{{Dcat1}}" required>
+											</div>
+										</div>
+										<br>
+										<button type="submit" class="btn btn-primary">Save changes</button>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+
+
+
+
+				<div class="col-md-6">
+					<h3 class="mb-5 heading-pricing ftco-animate">BEVERAGES</h3>
+					{% for Dname3, Dprice3, Dabout3, Dimg3, Dcat3 in data3 %}
+					<div class="pricing-entry d-flex ftco-animate">
+						<div class="img" style="background-image: url(../../../media/{{Dimg3}});"></div>
+						<div class="desc pl-3">
+							<div class="d-flex text align-items-center">
+								<h3><span>{{Dname3}}</span></h3>
+								<span class="price">₹ {{Dprice3}}/-</span>
+							</div>
+							<div class="d-block">
+								<p>{{Dabout3}}</p>
+							</div>
+						</div>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{Dname3}}exampleModal">
+							Edit Dish
+						</button>
+					</div>
+					<div class="modal fade" id="{{Dname3}}exampleModal" tabindex="-1" role="dialog"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel" style="color: black;">
+										BEVERAGES
+									</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<div class="modal-body">
+										<form action="/admenu2" method="post" enctype="multipart/form-data">
+											{% csrf_token %}
+											<div class="row">
+												<div class="col">
+													<label for="dishname">Dish Name</label>
+													<input type="text" class="form-control" name="dishname2"
+														value="{{Dname3}}" required>
+												</div>
+												<div class="col">
+													<label for="dishprice">Dish Price</label>
+													<input type="text" id="dishprice" name="dishprice2"
+														class="form-control" value="{{Dprice3}}" required>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col">
+													<label for="dishabout">Dish info</label>
+													<input type="text" id="dishabout" name="aboutdish2"
+														class="form-control" value="{{Dabout3}}" required>
+												</div>
+												<div class="col">
+													<label for="dishimg">Dish Image</label>
+													<div class="img"
+														style="background-image: url(../../../media/{{Dimg3}});">
+													</div>
+													<input type="file" id="dishimg" name="dishimg2"
+														class="form-control" required>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col">
+													<label for="dishname">Original Dish Name</label>
+													<input type="text" class="form-control" name="dishname"
+														value="{{Dname3}}" readonly>
+												</div>
+												<div class="col">
+													<label for="dishabout">Dish Category</label>
+													<input type="text" id="dishabout" name="dishcategory2"
+														class="form-control" value="{{Dcat3}}" required>
+												</div>
+											</div>
+											<br>
+											<button type="submit" class="btn btn-primary">Save changes</button>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-6 mb-5 pb-3">
+						<h3 class="mb-5 heading-pricing ftco-animate">NON-VEG</h3>
+						{% for Dname2, Dprice2, Dabout2, Dimg2, Dcat2 in data2 %}
+						<div class="pricing-entry d-flex ftco-animate">
+							<div class="img" style="background-image: url(../../../media/{{Dimg2}});"></div>
+							<div class="desc pl-3">
+								<div class="d-flex text align-items-center">
+									<h3><span>{{Dname2}}</span></h3>
+									<span class="price">₹ {{Dprice2}}/-</span>
+								</div>
+								<div class="d-block">
+									<p>{{Dabout2}}</p>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{Dname2}}exampleModal">
+							Edit Dish
+						</button>
+						<div class="modal fade" id="{{Dname2}}exampleModal" tabindex="-1" role="dialog"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel" style="color: black;">NON-VEG
+										</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<div class="modal-body">
+											<form action="/admenu2" method="post" enctype="multipart/form-data">
+												{% csrf_token %}
+												<div class="row">
+													<div class="col">
+														<label for="dishname">Dish Name</label>
+														<input type="text" class="form-control" name="dishname2"
+															value="{{Dname2}}" required>
+													</div>
+													<div class="col">
+														<label for="dishprice">Dish Price</label>
+														<input type="text" id="dishprice" name="dishprice2"
+															class="form-control" value="{{Dprice2}}" required>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col">
+														<label for="dishabout">Dish info</label>
+														<input type="text" id="dishabout" name="aboutdish2"
+															class="form-control" value="{{Dabout2}}" required>
+													</div>
+													<div class="col">
+														<label for="dishimg">Dish Image</label>
+														<div class="img"
+															style="background-image: url(../../../media/{{Dimg2}});">
+														</div>
+														<input type="file" id="dishimg" name="dishimg2"
+															class="form-control" required>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col">
+														<label for="dishname">Original Dish Name</label>
+														<input type="text" class="form-control" name="dishname"
+															value="{{Dname2}}" readonly>
+													</div>
+													<div class="col">
+														<label for="dishabout">Dish Category</label>
+														<input type="text" id="dishabout" name="dishcategory2"
+															class="form-control" value="{{Dcat2}}" required>
+													</div>
+												</div>
+
+
+												<button type="submit" class="btn btn-primary">Save changes</button>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+
+
+					<div class="col-md-6">
+						<h3 class="mb-5 heading-pricing ftco-animate">COMBO OFFERS</h3>
+						{% for Dname4, Dprice4, Dabout4, Dimg4, Dcat4 in data4 %}
+						<div class="pricing-entry d-flex ftco-animate">
+							<div class="img" style="background-image: url(../../../media/{{Dimg4}});"></div>
+							<div class="desc pl-3">
+								<div class="d-flex text align-items-center">
+									<h3><span>{{Dname4}}</span></h3>
+									<span class="price">₹ {{Dprice4}}/-</span>
+								</div>
+								<div class="d-block">
+									<p>{{Dabout4}}</p>
+								</div>
+							</div>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{Dname4}}exampleModal">
+								Edit Dish
+							</button>
+						</div>
+						<div class="modal fade" id="{{Dname4}}exampleModal" tabindex="-1" role="dialog"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel" style="color: black;">
+											COMBO OFFERS
+										</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<div class="modal-body">
+											<form action="/admenu2" method="post" enctype="multipart/form-data">
+												{% csrf_token %}
+												<div class="row">
+													<div class="col">
+														<label for="dishname">Dish Name</label>
+														<input type="text" class="form-control" name="dishname2"
+															value="{{Dname4}}" required>
+													</div>
+													<div class="col">
+														<label for="dishprice">Dish Price</label>
+														<input type="text" id="dishprice" name="dishprice2"
+															class="form-control" value="{{Dprice4}}" required>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col">
+														<label for="dishabout">Dish info</label>
+														<input type="text" id="dishabout" name="aboutdish2"
+															class="form-control" value="{{Dabout4}}" required>
+													</div>
+													<div class="col">
+														<label for="dishimg">Dish Image</label>
+														<div class="img"
+															style="background-image: url(../../../media/{{Dimg4}});">
+														</div>
+														<input type="file" id="dishimg" name="dishimg2"
+															class="form-control" required>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col">
+														<label for="dishname">Original Dish Name</label>
+														<input type="text" class="form-control" name="dishname"
+															value="{{Dname4}}" readonly>
+													</div>
+													<div class="col">
+														<label for="dishabout">Dish Category</label>
+														<input type="text" id="dishabout" name="dishcategory2"
+															class="form-control" value="{{Dcat4}}" required>
+													</div>
+												</div>
+												<br>
+												<button type="submit" class="btn btn-primary">Save changes</button>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<br><br><br><br><br>
+
+	<footer class="ftco-footer ftco-section img">
+		<div class="overlay"></div>
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="ftco-footer-widget mb-4">
+						<a class="navbar-brand" href="/adindex">Modern<small>Canteen</small></a>
+						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5"
+							style="margin-left: 20%;">
+							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col">
+					<div class="ftco-footer-widget mb-4 ml-md-4">
+						<h2 class="ftco-heading-2">Services</h2>
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item"><a href="/admenu" class="nav-link">Menu</a></li>
+							<li class="nav-item"><a href="/addstaff" class="nav-link">Staff</a></li>
+							<li class="nav-item"><a href="/viewfeedback" class="nav-link">Feedback</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<div class="block-23 mb-3">
+							<ul>
+								<li><span class="icon icon-map-marker"></span><span class="text">Modern College of
+										Arts,Science and Commerce Shivajinagar Pune-05</span></li>
+								<li><a href="#"><span class="icon icon-phone"></span><span
+											class="text">9858358823/9730133445/7780001782</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span
+											class="text">vaishnavivaidya129@gmail.com</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span
+											class="text">pragya.january2001@gmail.com</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span
+											class="text">manasvisawant05@gmail.com</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script>2023 All rights reserved <i
+							class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+							target="_blank">By:Modern College Students</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+				stroke="#F96D00" />
+		</svg></div>
+
+	<!-- <script>
+		$('#myModal').on('shown.bs.modal', function () {
+			$('#myInput').trigger('focus')
+		})
+	</script> -->
+
+	<script src="../../static/canteenapp/js/jquery.min.js"></script>
+	<!-- <script src="../../static/canteenapp/new/js/jquery-3.3.1.min.js"></script> -->
+	<script src="../../static/canteenapp/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="../../static/canteenapp/js/popper.min.js"></script>
+	<script src="../../static/canteenapp/js/bootstrap.min.js"></script>
+	<script src="../../static/canteenapp/js/jquery.easing.1.3.js"></script>
+	<script src="../../static/canteenapp/js/jquery.waypoints.min.js"></script>
+	<script src="../../static/canteenapp/js/jquery.stellar.min.js"></script>
+	<script src="../../static/canteenapp/js/owl.carousel.min.js"></script>
+	<script src="../../static/canteenapp/js/jquery.magnific-popup.min.js"></script>
+	<script src="../../static/canteenapp/js/aos.js"></script>
+	<script src="../../static/canteenapp/js/jquery.animateNumber.min.js"></script>
+	<script src="../../static/canteenapp/js/bootstrap-datepicker.js"></script>
+	<script src="../../static/canteenapp/js/jquery.timepicker.min.js"></script>
+	<script src="../../static/canteenapp/js/scrollax.min.js"></script>
+	<script src="../../static/canteenapp/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,74 +1,84 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
-
 <head>
-	<title>Login</title>
+	<title>Visitor Portal - Modern Canteen</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	{% load static %}
-	<link rel="stylesheet" href="{% static 'studentapp/login_css/style.css' %}">
-
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		body { font-family: 'Inter', sans-serif; }
+	</style>
 </head>
-
-<body class="img js-fullheight" style="background-image: url({% static 'visitorsapp/login_images/register.jpg' %});">
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center" style="margin-left: 35%;">
-				<div class="col-md-5 text-center mb-3">
-					<h2 class="heading-section">Visitor Login</h2>
-				</div>
+<body class="bg-gray-50 text-gray-900 antialiased">
+	<div class="min-h-screen flex">
+		<!-- Left Side: Image -->
+		<div class="hidden lg:flex lg:w-1/2 relative bg-gray-900">
+			<!-- Note: Original used 'visitorsapp/login_images/register.jpg', we'll keep that path but fallback works -->
+			<img src="{% static 'visitorsapp/login_images/register.jpg' %}" alt="Campus" class="absolute inset-0 w-full h-full object-cover opacity-50">
+			<div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
+			<div class="relative z-10 flex flex-col justify-end p-16 text-white w-full">
+				<a href="/" class="text-3xl font-extrabold tracking-tight mb-6">Modern<span class="text-orange-500 font-light">Canteen</span></a>
+				<h2 class="text-5xl font-extrabold mb-4 tracking-tight">Visitor Portal</h2>
+				<p class="text-xl text-gray-300 font-light max-w-lg">Welcome to our campus! Sign in to order your meals effortlessly during your visit.</p>
 			</div>
-			<div class="row justify-content-center container" style="size: 100%;">
-				<div class="col-md-6 col-lg-4" style="margin-left: 35%;">
-					<div class="login-wrap p-0">
-						<h3 class="mb-4 text-center">Have an account?</h3>
-						<form action="/vistlogin" class="signin-form" method="POST">
-							{% csrf_token %}
-							<div class="form-group">
-								<input type="email" name="visitemail" class="form-control" placeholder="Enter Email" required>
-							</div>
+		</div>
 
-							<div class="form-group">
-								<input id="password-field" name="password" type="password" class="form-control" placeholder="Password"
-									required>
-								<span toggle="#password-field"
-									class="fa fa-fw fa-eye field-icon toggle-password"></span>
+		<!-- Right Side: Form -->
+		<div class="w-full lg:w-1/2 flex items-center justify-center p-8 sm:p-12 lg:p-24 bg-white">
+			<div class="w-full max-w-md space-y-8">
+				<div class="text-center lg:text-left">
+					<a href="/" class="lg:hidden text-3xl font-extrabold tracking-tight mb-6 block text-gray-900">Modern<span class="text-orange-500 font-light">Canteen</span></a>
+					<h2 class="text-3xl font-bold text-gray-900 tracking-tight">Welcome back</h2>
+					<p class="mt-2 text-sm text-gray-600">Please sign in to your visitor account</p>
+				</div>
+				
+				<form class="mt-8 space-y-6" action="/vistlogin" method="POST">
+					{% csrf_token %}
+					<div class="space-y-5">
+						<div>
+							<label for="username" class="block text-sm font-medium text-gray-700">Email Address</label>
+							<div class="mt-1">
+								<input id="username" name="visitemail" type="email" placeholder="Enter Email Address" required class="appearance-none block w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent sm:text-sm transition-all bg-gray-50 focus:bg-white">
 							</div>
+						</div>
 
-							<div class="form-group">
-								<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
-							</div>
-						</form>
-						<div class="row">
-							<div class="col">
-								<div class="social d-flex text-center">
-									<a href="/visitregister" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span>
-										SIGN UP</a>
-								</div>
-							</div>
-							<div class="col">
-								<div class="social d-flex text-center">
-									<a href="/sendotp" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span>
-										Forget Password</a>
-								</div>
+						<div>
+							<label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+							<div class="mt-1 relative">
+								<input id="password" name="password" type="password" placeholder="••••••••" required class="appearance-none block w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent sm:text-sm transition-all bg-gray-50 focus:bg-white">
+								<button type="button" onclick="const p=document.getElementById('password'); p.type=p.type==='password'?'text':'password';" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 focus:outline-none">
+									<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+									</svg>
+								</button>
 							</div>
 						</div>
 					</div>
+
+					<div class="flex items-center justify-between mt-4">
+						<div class="text-sm">
+							<a href="/visitregister" class="font-semibold text-orange-600 hover:text-orange-500 transition-colors">Don't have an account? Sign up</a>
+						</div>
+						<div class="text-sm">
+							<a href="/sendotp" class="font-medium text-gray-500 hover:text-gray-900 transition-colors">Forgot password?</a>
+						</div>
+					</div>
+
+					<div class="pt-2">
+						<button type="submit" class="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-xl shadow-lg text-sm font-bold text-white bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transform hover:-translate-y-0.5 transition-all">
+							Sign In to Dashboard
+						</button>
+					</div>
+				</form>
+				
+				<div class="mt-8 pt-6 border-t border-gray-100 text-center text-sm">
+					<p class="text-gray-500">Back to <a href="/" class="font-semibold text-gray-900 hover:text-orange-500 transition-colors">Home Page</a></p>
 				</div>
 			</div>
 		</div>
-	</section>
-
-	<script src="{% static 'visitorsapp/login_js/jquery.min.js' %}"></script>
-	<script src="{% static 'visitorsapp/login_js/popper.js' %}"></script>
-	<script src="{% static 'visitorsapp/login_js/bootstrap.min.js' %}"></script>
-	<script src="{% static 'visitorsapp/login_js/main.js' %}"></script>
-
+	</div>
 </body>
-
 </html>

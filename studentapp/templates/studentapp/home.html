@@ -2,13 +2,15 @@
 <html lang="en">
 
 <head>
-	<title>Moder Canteen</title>
+	<title>moderncollege Canteen</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+
+	<!-- Tailwind CSS CDN -->
+	<script src="https://cdn.tailwindcss.com"></script>
 
 	<link rel="stylesheet" href="../static/canteenapp/css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="../static/canteenapp/css/animate.css">
@@ -40,186 +42,217 @@
 	</style>
 </head>
 
-<body>
-	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-		<div class="container">
-			<img src="../../static/canteenapp/images/moderncollege.jpg" width="100" height="80" alt="">
-			<a class="navbar-brand" href="/"> Modern<small> Canteen</small></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="#Safety" class="nav-link">About</a></li>
-					<li class="nav-item"><a href="#contacts" class="nav-link">Contact</a></li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							Login
-						</a>
-						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-							<li><a class="dropdown-item" href="/studlogin">Student Login</a></li>
-							<li><a class="dropdown-item" href="/teacherlogin">Teachers Login</a></li>
-							<li><a class="dropdown-item" href="/stafflogin">Canteen Staff Login</a></li>
-							<li><a class="dropdown-item" href="/vistlogin">Visitors Login</a></li>
-						</ul>
-					</li>
-				</ul>
+<body class="bg-gray-50 font-sans antialiased text-gray-900">
+
+	<!-- Sticky Responsive Navbar -->
+	<nav class="fixed w-full z-50 top-0 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between items-center h-20">
+				
+				<!-- Logo -->
+				<div class="flex-shrink-0 flex items-center gap-3">
+					<img src="../../static/canteenapp/images/moderncollege.jpg" alt="Logo" class="h-12 w-auto rounded-lg shadow-sm">
+					<a href="/" class="text-2xl font-extrabold text-gray-800 tracking-tight">Modern<span class="text-orange-500 font-light">Canteen</span></a>
+				</div>
+
+				<!-- Desktop Menu -->
+				<div class="hidden md:flex space-x-8 items-center">
+					<a href="/" class="text-orange-500 font-semibold hover:text-orange-600 transition-colors">Home</a>
+					<a href="#Safety" class="text-gray-600 font-medium hover:text-orange-500 transition-colors">About</a>
+					<a href="#contacts" class="text-gray-600 font-medium hover:text-orange-500 transition-colors">Contact</a>
+					
+					<!-- Dropdown (Login) -->
+					<div class="relative">
+						<button onclick="document.getElementById('login-dropdown').classList.toggle('hidden')" class="flex items-center gap-1 text-white bg-gradient-to-r from-orange-500 to-red-600 px-5 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all focus:outline-none">
+							Login 
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+						</button>
+						<div id="login-dropdown" class="hidden absolute right-0 top-full pt-2 w-48 z-50">
+							<div class="bg-white rounded-xl shadow-xl border border-gray-100 py-2">
+								<a href="/studlogin" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-medium transition-colors">Student Login</a>
+								<a href="/teacherlogin" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-medium transition-colors">Teachers Login</a>
+								<a href="/stafflogin" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-medium transition-colors">Staff Login</a>
+								<a href="/vistlogin" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-medium transition-colors">Visitors Login</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Mobile Menu Button -->
+				<div class="md:hidden flex items-center">
+					<button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-gray-600 hover:text-orange-500 focus:outline-none">
+						<svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Mobile Menu Dropdown -->
+		<div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+			<div class="px-4 pt-2 pb-6 space-y-2">
+				<a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-orange-500 bg-orange-50">Home</a>
+				<a href="#Safety" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-orange-500 hover:bg-gray-50">About</a>
+				<a href="#contacts" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-orange-500 hover:bg-gray-50">Contact</a>
+				<div class="border-t border-gray-100 my-2 pt-2">
+					<p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Login Portals</p>
+					<a href="/studlogin" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-orange-500 hover:bg-gray-50">Student Login</a>
+					<a href="/teacherlogin" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-orange-500 hover:bg-gray-50">Teachers Login</a>
+					<a href="/stafflogin" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-orange-500 hover:bg-gray-50">Staff Login</a>
+					<a href="/vistlogin" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-orange-500 hover:bg-gray-50">Visitors Login</a>
+				</div>
 			</div>
 		</div>
 	</nav>
-	<!-- END nav -->
 
-	<section class="home-slider owl-carousel">
+	<!-- Hero Section -->
+	<section class="relative pt-20 h-[60vh] min-h-[500px] flex items-center justify-center bg-gray-900">
+		<div class="absolute inset-0 overflow-hidden">
+			<img src="../static/canteenapp/images/bg_3.jpg" alt="Canteen Background" class="w-full h-full object-cover opacity-40">
+			<div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900/50"></div>
+		</div>
+		
+		<div class="relative z-10 text-center px-4 max-w-4xl mx-auto transform translate-y-8 animate-fade-in-up">
+			<h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-lg tracking-tight">Welcome to Modern Canteen</h1>
+			<p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto font-light drop-shadow-md">Discover delicious, freshly prepared meals with the highest standards of safety and hygiene.</p>
+			
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a href="#Safety" class="px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-full font-bold text-lg shadow-lg hover:shadow-orange-500/30 transform hover:-translate-y-1 transition-all duration-300">
+					Explore Safety Measures
+				</a>
+				<a href="/studlogin" class="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/30 text-white rounded-full font-bold text-lg shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+					Student Portal
+				</a>
+			</div>
+		</div>
+	</section>
 
-		<div class="slider-item" style="background-image: url(../static/canteenapp/images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row slider-text justify-content-center align-items-center">
+	<!-- About & Safety Section -->
+	<section class="py-24 bg-white" id="Safety">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-16">
+				<span class="text-orange-500 font-bold tracking-wider uppercase text-sm mb-2 block">Our Standards</span>
+				<h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">About Us & Safety Measures</h2>
+				<p class="text-xl text-gray-500 max-w-2xl mx-auto">We prioritize your health by maintaining the highest standards of hygiene and safety in our canteen.</p>
+			</div>
 
+			<div class="flex flex-col gap-12 max-w-5xl mx-auto">
+				<!-- Safety Measure 1 -->
+				<div class="flex flex-col lg:flex-row items-center gap-10 bg-gray-50 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+					<div class="w-full lg:w-1/2 overflow-hidden rounded-2xl shadow-md">
+						<img src="../../static/canteenapp/images/aboutusimg1.jpeg" alt="Wash fruits and veggies" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+					</div>
+					<div class="w-full lg:w-1/2 text-left space-y-4">
+						<div class="w-16 h-16 bg-red-100 text-red-500 rounded-2xl flex items-center justify-center text-3xl font-bold shadow-sm">
+							✓
+						</div>
+						<h3 class="text-3xl font-bold text-gray-900">Fresh Ingredients</h3>
+						<p class="text-lg text-gray-600 leading-relaxed">We wash all fruits and vegetables thoroughly before use, ensuring your meals are safe, fresh, and nutritious every single time.</p>
+					</div>
+				</div>
+
+				<!-- Safety Measure 2 -->
+				<div class="flex flex-col lg:flex-row-reverse items-center gap-10 bg-gray-50 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+					<div class="w-full lg:w-1/2 overflow-hidden rounded-2xl shadow-md">
+						<img src="../../static/canteenapp/images/aboutusimg2.jpeg" alt="Wash hands" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+					</div>
+					<div class="w-full lg:w-1/2 text-left space-y-4">
+						<div class="w-16 h-16 bg-blue-100 text-blue-500 rounded-2xl flex items-center justify-center text-3xl font-bold shadow-sm">
+							✓
+						</div>
+						<h3 class="text-3xl font-bold text-gray-900">Strict Hygiene</h3>
+						<p class="text-lg text-gray-600 leading-relaxed">Always, always, always wash your hands. Our staff adheres strictly to handwashing protocols before handling any food.</p>
+					</div>
+				</div>
+
+				<!-- Safety Measure 3 -->
+				<div class="flex flex-col lg:flex-row items-center gap-10 bg-gray-50 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+					<div class="w-full lg:w-1/2 overflow-hidden rounded-2xl shadow-md">
+						<img src="../../static/canteenapp/images/aboutusimg3.webp" alt="Clean kitchen" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+					</div>
+					<div class="w-full lg:w-1/2 text-left space-y-4">
+						<div class="w-16 h-16 bg-green-100 text-green-500 rounded-2xl flex items-center justify-center text-3xl font-bold shadow-sm">
+							✓
+						</div>
+						<h3 class="text-3xl font-bold text-gray-900">Spotless Kitchen</h3>
+						<p class="text-lg text-gray-600 leading-relaxed">We sanitize and clean the kitchen rigorously after each food preparation cycle to maintain a completely sterile environment.</p>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="ftco-section">
-		<div class="container">
-			<h1 style="color:orangered;font-size: 50px;"><B>
-					<center>About us</center>
-				</B></h1>
-			<div id="Safety">
-				<marquee id="marquee1"><b>Safety Measures we take</b></marquee>
-			</div>
-			<div class="bg-white py-5">
-				<div class="row align-items-center">
-					<div class="col-lg-5 px-5 mx-auto"><img src="../../static/canteenapp/images/aboutusimg1.jpeg" alt=""
-							class="img-fluid mb-4 mb-lg-0"></div>
-					<div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
-						<h2 class="font-weight-light text-danger"><b>Wash fruits and vegetables before use.</b></h2>
 
+	<!-- Footer Section -->
+	<footer class="bg-gray-900 text-white pt-20 pb-10" id="contacts">
+		<div class="container mx-auto px-4 max-w-7xl">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+				
+				<!-- Brand -->
+				<div>
+					<a href="/" class="text-3xl font-extrabold tracking-tight mb-6 block">Modern<span class="text-orange-500 font-light">Canteen</span></a>
+					<p class="text-gray-400 mb-6 leading-relaxed">Serving quality, hygienic, and delicious meals to fuel your academic and professional journey.</p>
+					<div class="flex space-x-4">
+						<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:text-white transition-colors">
+							<span class="icon-twitter"></span>
+						</a>
+						<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:text-white transition-colors">
+							<span class="icon-facebook"></span>
+						</a>
+						<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:text-white transition-colors">
+							<span class="icon-instagram"></span>
+						</a>
 					</div>
 				</div>
-				<div class="container py-5">
-					<div class="row align-items-center mb-5">
-						<div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
-							<h2 class="font-weight-light text-danger"><b>Always, always, always wash your hands.</b>
-							</h2>
-						</div>
-						<div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img
-								src="../../static/canteenapp/images/aboutusimg2.jpeg" alt=""
-								class="img-fluid mb-4 mb-lg-0"></div>
-					</div>
-					<div class="row align-items-center">
-						<div class="col-lg-5 px-5 mx-auto"><img src="../../static/canteenapp/images/aboutusimg3.webp"
-								alt="" class="img-fluid mb-4 mb-lg-0"></div>
-						<div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
-							<h2 class="font-weight-light text-danger"><b>Clean the kitchen after each food
-									preparation.</b></h2>
-						</div>
-					</div>
-				</div>
-			</div>
 
-		</div>
-	</section>
-
-
-	<footer class="ftco-footer ftco-section img">
-		<div class="overlay"></div>
-		<br>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="ftco-footer-widget mb-4">
-						<a class="navbar-brand" href="/adindex">Modern<small>Canteen</small></a>
-						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5"
-							style="margin-left: 20%;">
-							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-						</ul>
-					</div>
+				<!-- Links -->
+				<div>
+					<h3 class="text-xl font-bold mb-6 border-b border-gray-800 pb-2">Links</h3>
+					<ul class="space-y-3">
+						<li><a href="/" class="text-gray-400 hover:text-orange-500 transition-colors">Home</a></li>
+						<li><a href="#Safety" class="text-gray-400 hover:text-orange-500 transition-colors">About Us</a></li>
+						<li><a href="#contacts" class="text-gray-400 hover:text-orange-500 transition-colors">Contact</a></li>
+					</ul>
 				</div>
-				<div class="col">
-					<div class="ftco-footer-widget mb-4 ml-md-4">
-						<h2 class="ftco-heading-2">Services</h2>
-						<ul class="navbar-nav ml-auto">
-							<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-							<li class="nav-item"><a href="#Safety" class="nav-link">About Us</a></li>
-							<li class="nav-item"><a href="#contacts" class="nav-link">Contact</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col">
-					<div class="ftco-footer-widget mb-4" id="contacts">
-						<h2 class="ftco-heading-2">Have a Questions?</h2>
-						<div class="block-23 mb-3">
-							<ul>
-								<li><span class="icon icon-map-marker"></span><span class="text">Modern College of
-										Arts,Science and Commerce Shivajinagar Pune-05</span></li>
-								<li><a href="#"><span class="icon icon-phone"></span><span
-											class="text">9858358823/9730133445/7780001782</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span
-											class="text">vaishnavivaidya129@gmail.com</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span
-											class="text">pragya.january2001@gmail.com</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span
-											class="text">manasvisawant05@gmail.com</span></a></li>
-							</ul>
-						</div>
-					</div>
+
+				<!-- Contact -->
+				<div>
+					<h3 class="text-xl font-bold mb-6 border-b border-gray-800 pb-2">Have Questions?</h3>
+					<ul class="space-y-4">
+						<li class="flex items-start gap-4">
+							<span class="text-orange-500 mt-1">📍</span>
+							<span class="text-gray-400">Modern College of Arts, Science and Commerce Shivajinagar Pune-05</span>
+						</li>
+						<li class="flex items-start gap-4">
+							<span class="text-orange-500 mt-1">📞</span>
+							<span class="text-gray-400">9858358823 / 9730133445 / 7780001782</span>
+						</li>
+						<li class="flex items-start gap-4">
+							<span class="text-orange-500 mt-1">✉️</span>
+							<div class="text-gray-400 flex flex-col text-sm space-y-1">
+								<a href="mailto:vaishnavivaidya129@gmail.com" class="hover:text-orange-500">vaishnavivaidya129@gmail.com</a>
+								<a href="mailto:pragya.january2001@gmail.com" class="hover:text-orange-500">pragya.january2001@gmail.com</a>
+								<a href="mailto:manasvisawant05@gmail.com" class="hover:text-orange-500">manasvisawant05@gmail.com</a>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;
-						<script>document.write(new Date().getFullYear());</script>2023 All rights reserved <i
-							class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-							target="_blank">By:Modern College Students</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
-				</div>
+
+			<!-- Copyright -->
+			<div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+				<p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by Modern College Students</p>
 			</div>
 		</div>
 	</footer>
 
-
-
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+	<!-- Loader (Kept for compatibility with existing scripts) -->
+	<div id="ftco-loader" class="hidden"><svg class="circular" width="48px" height="48px">
 			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
 			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
 				stroke="#F96D00" />
 		</svg></div>
-
-	<script>
-		$('#myModal').on('shown.bs.modal', function () {
-			$('#myInput').trigger('focus')
-		})
-	</script>
-
-	<script src="../static/canteenapp/js/jquery.min.js"></script>
-	<script src="../static/canteenapp/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="../static/canteenapp/js/popper.min.js"></script>
-	<script src="../static/canteenapp/js/bootstrap.min.js"></script>
-	<script src="../static/canteenapp/js/jquery.easing.1.3.js"></script>
-	<script src="../static/canteenapp/js/jquery.waypoints.min.js"></script>
-	<script src="../static/canteenapp/js/jquery.stellar.min.js"></script>
-	<script src="../static/canteenapp/js/owl.carousel.min.js"></script>
-	<script src="../static/canteenapp/js/jquery.magnific-popup.min.js"></script>
-	<script src="../static/canteenapp/js/aos.js"></script>
-	<script src="../static/canteenapp/js/jquery.animateNumber.min.js"></script>
-	<script src="../static/canteenapp/js/bootstrap-datepicker.js"></script>
-	<script src="../static/canteenapp/js/jquery.timepicker.min.js"></script>
-	<script src="../static/canteenapp/js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="../static/canteenapp/js/google-map.js"></script>
-	<script src="../static/canteenapp/js/main.js"></script>
 
 </body>
 

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block body %}
+<!-- Utility bar -->
+<div class="hidden bg-navy-950 text-xs text-navy-200 md:block">
+  <div class="container-x flex h-9 items-center justify-between">
+    <div class="flex items-center gap-6">
+      <span class="flex items-center gap-1.5">{% include "partials/icon.html" with name="map" cls="h-3.5 w-3.5 text-gold-400" %}Shivajinagar, Pune – 411005</span>
+      <span class="flex items-center gap-1.5">{% include "partials/icon.html" with name="clock" cls="h-3.5 w-3.5 text-gold-400" %}Mon – Sat &middot; 8:00 AM – 6:00 PM</span>
+    </div>
+    <div class="flex items-center gap-5">
+      <a href="/stafflogin" class="hover:text-white">Staff Login</a>
+      <a href="/adlogin" class="hover:text-white">Administration</a>
+    </div>
+  </div>
+</div>
+
+<!-- Main header -->
+<header class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
+  <div class="container-x flex h-20 items-center justify-between gap-4">
+    {% include "partials/brand.html" with tagline="Modern College of Arts, Science & Commerce" %}
+
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Main">
+      <a href="/" class="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-navy-50 hover:text-navy-800">Home</a>
+      <a href="/#menu" class="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-navy-50 hover:text-navy-800">Today's Menu</a>
+      <a href="/#standards" class="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-navy-50 hover:text-navy-800">Food Safety</a>
+      <a href="/#timings" class="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-navy-50 hover:text-navy-800">Visit Us</a>
+      <div class="group relative">
+        <button type="button" class="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-navy-50 hover:text-navy-800">
+          Portals
+          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.2 7.2a.75.75 0 0 1 1.06 0L10 10.94l3.74-3.74a.75.75 0 1 1 1.06 1.06l-4.27 4.27a.75.75 0 0 1-1.06 0L5.2 8.26a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="invisible absolute right-0 top-full w-64 pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+          <div class="card overflow-hidden p-2">
+            <a href="/studlogin" class="flex items-center gap-3 rounded-md p-2.5 hover:bg-navy-50">{% include "partials/icon.html" with name="school" cls="h-5 w-5 text-navy-600" %}<span><span class="block text-sm font-semibold text-slate-900">Student</span><span class="block text-xs text-slate-500">Order with your roll number</span></span></a>
+            <a href="/teacherlogin" class="flex items-center gap-3 rounded-md p-2.5 hover:bg-navy-50">{% include "partials/icon.html" with name="briefcase" cls="h-5 w-5 text-navy-600" %}<span><span class="block text-sm font-semibold text-slate-900">Faculty</span><span class="block text-xs text-slate-500">Teaching &amp; non-teaching staff</span></span></a>
+            <a href="/vistlogin" class="flex items-center gap-3 rounded-md p-2.5 hover:bg-navy-50">{% include "partials/icon.html" with name="badge" cls="h-5 w-5 text-navy-600" %}<span><span class="block text-sm font-semibold text-slate-900">Visitor</span><span class="block text-xs text-slate-500">Guests &amp; parents</span></span></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="/studlogin" class="btn-primary hidden sm:inline-flex">Order Now</a>
+      <button type="button" data-toggle="#public-mobile-nav" aria-expanded="false" aria-label="Open menu" class="rounded-md p-2 text-slate-700 hover:bg-slate-100 lg:hidden">
+        {% include "partials/icon.html" with name="menu" cls="h-6 w-6" %}
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav -->
+  <div id="public-mobile-nav" class="hidden border-t border-slate-200 bg-white lg:hidden">
+    <nav class="container-x space-y-1 py-4" aria-label="Mobile">
+      <a href="/" class="block rounded-md px-3 py-2 font-medium text-slate-700 hover:bg-navy-50">Home</a>
+      <a href="/#menu" class="block rounded-md px-3 py-2 font-medium text-slate-700 hover:bg-navy-50">Today's Menu</a>
+      <a href="/#standards" class="block rounded-md px-3 py-2 font-medium text-slate-700 hover:bg-navy-50">Food Safety</a>
+      <a href="/#timings" class="block rounded-md px-3 py-2 font-medium text-slate-700 hover:bg-navy-50">Visit Us</a>
+      <p class="px-3 pt-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Portals</p>
+      <a href="/studlogin" class="block rounded-md px-3 py-2 font-medium text-slate-700 hover:bg-navy-50">Student</a>
+      <a href="/teacherlogin" class="block rounded-md px-3 py-2 font-medium text-slate-700 hover:bg-navy-50">Faculty</a>
+      <a href="/vistlogin" class="block rounded-md px-3 py-2 font-medium text-slate-700 hover:bg-navy-50">Visitor</a>
+      <a href="/stafflogin" class="block rounded-md px-3 py-2 font-medium text-slate-700 hover:bg-navy-50">Canteen Staff</a>
+      <a href="/adlogin" class="block rounded-md px-3 py-2 font-medium text-slate-700 hover:bg-navy-50">Administration</a>
+    </nav>
+  </div>
+</header>
+
+<main class="flex-1">
+  {% block content %}{% endblock %}
+</main>
+
+{% include "partials/footer.html" %}
+{% endblock %}

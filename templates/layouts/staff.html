@@ -1,0 +1,10 @@
+{% extends "layouts/dashboard.html" %}
+{% block title %}{% block staff_title %}Staff Console{% endblock %}{% endblock %}
+{% block sidebar_brand %}{% include "partials/brand.html" with dark=True href="/staffindex" tagline="Kitchen Console" %}{% endblock %}
+{% block sidebar_heading %}Kitchen{% endblock %}
+{% block sidebar %}
+  {% include "partials/side_link.html" with href="/staffindex" icon="home" label="Overview" %}
+  {% include "partials/side_link.html" with href="/takeorder" icon="receipt" label="Incoming Orders" %}
+{% endblock %}
+{% block role_label %}Canteen Staff{% endblock %}
+{% block crumb %}Kitchen Console{% endblock %}

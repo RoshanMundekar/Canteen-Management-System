@@ -1,0 +1,46 @@
+{% comment %}Params: menu_url, cart_url, orders_url, feedback_url, profile_url{% endcomment %}
+{% load static %}
+<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+  <a href="{{ menu_url }}" class="card group p-5 transition hover:border-navy-300 hover:shadow-lg">
+    <span class="flex h-11 w-11 items-center justify-center rounded-md bg-navy-50 text-navy-700 group-hover:bg-navy-800 group-hover:text-white">{% include "partials/icon.html" with name="food" cls="h-6 w-6" %}</span>
+    <h3 class="mt-4 font-semibold text-navy-900">Browse menu</h3>
+    <p class="mt-1 text-sm text-slate-500">Today's veg, non-veg, beverages and combos.</p>
+  </a>
+  <a href="{{ cart_url }}" class="card group p-5 transition hover:border-navy-300 hover:shadow-lg">
+    <span class="flex h-11 w-11 items-center justify-center rounded-md bg-gold-50 text-gold-700 group-hover:bg-gold-500 group-hover:text-navy-950">{% include "partials/icon.html" with name="cart" cls="h-6 w-6" %}</span>
+    <h3 class="mt-4 font-semibold text-navy-900">My cart <span class="ml-1 rounded-full bg-gold-100 px-2 py-0.5 text-xs font-bold text-gold-700">{{ cartcount|default:0 }}</span></h3>
+    <p class="mt-1 text-sm text-slate-500">Review items and check out.</p>
+  </a>
+  <a href="{{ orders_url }}" class="card group p-5 transition hover:border-navy-300 hover:shadow-lg">
+    <span class="flex h-11 w-11 items-center justify-center rounded-md bg-emerald-50 text-emerald-700 group-hover:bg-emerald-600 group-hover:text-white">{% include "partials/icon.html" with name="receipt" cls="h-6 w-6" %}</span>
+    <h3 class="mt-4 font-semibold text-navy-900">Orders &amp; invoices</h3>
+    <p class="mt-1 text-sm text-slate-500">Download invoices for past orders.</p>
+  </a>
+  <a href="{{ feedback_url }}" class="card group p-5 transition hover:border-navy-300 hover:shadow-lg">
+    <span class="flex h-11 w-11 items-center justify-center rounded-md bg-sky-50 text-sky-700 group-hover:bg-sky-600 group-hover:text-white">{% include "partials/icon.html" with name="chat" cls="h-6 w-6" %}</span>
+    <h3 class="mt-4 font-semibold text-navy-900">Give feedback</h3>
+    <p class="mt-1 text-sm text-slate-500">Help us improve quality and service.</p>
+  </a>
+</div>
+
+<div class="mt-8 grid gap-6 lg:grid-cols-3">
+  <section class="relative overflow-hidden rounded-lg bg-navy-900 text-white lg:col-span-2">
+    <img src="{% static 'canteenapp/images/bg_2.jpg' %}" alt="" class="absolute inset-0 h-full w-full object-cover opacity-20">
+    <div class="relative p-6 sm:p-10">
+      <p class="eyebrow !text-gold-400">Skip the queue</p>
+      <h2 class="mt-2 max-w-lg font-serif text-2xl font-bold sm:text-3xl">Order ahead and collect your meal between lectures.</h2>
+      <p class="mt-3 max-w-lg text-sm text-navy-100">Place your order, pay by card or cash, and the kitchen will email you an estimated ready time.</p>
+      <a href="{{ menu_url }}" class="btn-gold mt-6">Start an order {% include "partials/icon.html" with name="arrow" cls="h-4 w-4" %}</a>
+    </div>
+  </section>
+  <section class="card p-6">
+    <h2 class="font-serif text-lg font-bold text-navy-900">Service hours</h2>
+    <dl class="mt-4 divide-y divide-slate-100 text-sm">
+      <div class="flex justify-between py-2.5"><dt class="text-slate-500">Breakfast</dt><dd class="font-medium">8:00 – 10:30 AM</dd></div>
+      <div class="flex justify-between py-2.5"><dt class="text-slate-500">Lunch</dt><dd class="font-medium">12:00 – 3:00 PM</dd></div>
+      <div class="flex justify-between py-2.5"><dt class="text-slate-500">Snacks</dt><dd class="font-medium">3:30 – 6:00 PM</dd></div>
+      <div class="flex justify-between py-2.5"><dt class="text-slate-500">Sunday</dt><dd class="font-medium text-red-600">Closed</dd></div>
+    </dl>
+    <a href="{{ profile_url }}" class="btn-outline mt-5 w-full">{% include "partials/icon.html" with name="user" cls="h-4 w-4" %}Manage profile</a>
+  </section>
+</div>

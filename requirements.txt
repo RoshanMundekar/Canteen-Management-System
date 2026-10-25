@@ -1,4 +1,7 @@
 Django>=4.2.1
 InvoiceGenerator
+reportlab>=3.6
 pymysql
 pandas
+numpy
+scikit-learn

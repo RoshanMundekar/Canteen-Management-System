@@ -1,0 +1,27 @@
+{% comment %}Params: action, id_label. Context: usrnames, usrmail, usermobile, usrempId{% endcomment %}
+<div class="grid gap-8 lg:grid-cols-3">
+  <aside class="card p-6 text-center">
+    <span class="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-navy-800 font-serif text-4xl font-bold uppercase text-gold-400 ring-4 ring-navy-100">{{ usrnames|slice:":1" }}</span>
+    <h2 class="mt-4 font-serif text-xl font-bold capitalize text-navy-900">{{ usrnames }}</h2>
+    <p class="text-sm text-slate-500">{{ usrmail }}</p>
+    <dl class="mt-6 divide-y divide-slate-100 border-t border-slate-100 text-left text-sm">
+      <div class="flex justify-between py-3"><dt class="text-slate-500">{{ id_label }}</dt><dd class="font-medium text-slate-900">{{ usrempId }}</dd></div>
+      <div class="flex justify-between py-3"><dt class="text-slate-500">Mobile</dt><dd class="font-medium text-slate-900">{{ usermobile }}</dd></div>
+    </dl>
+  </aside>
+
+  <form action="{{ action }}" method="post" class="card p-5 sm:p-8 lg:col-span-2">
+    {% csrf_token %}
+    <h2 class="font-serif text-xl font-bold text-navy-900">Account details</h2>
+    <p class="mt-1 text-sm text-slate-500">Keep your contact details up to date so we can send invoices and order updates.</p>
+    <div class="mt-6 grid gap-5 sm:grid-cols-2">
+      <div><label class="field-label" for="usrname">Full name</label><input id="usrname" type="text" name="usrname" value="{{ usrnames }}" readonly class="field cursor-not-allowed bg-slate-50 text-slate-500"></div>
+      <div><label class="field-label" for="empno">{{ id_label }}</label><input id="empno" type="text" name="empno" value="{{ usrempId }}" readonly class="field cursor-not-allowed bg-slate-50 text-slate-500"></div>
+      <div><label class="field-label" for="emailid">Email address</label><input id="emailid" type="email" name="emailid" value="{{ usrmail }}" required class="field"></div>
+      <div><label class="field-label" for="mobileno">Mobile number</label><input id="mobileno" type="tel" name="mobileno" value="{{ usermobile }}" minlength="10" maxlength="10" pattern="[0-9]{10}" required class="field"></div>
+    </div>
+    <div class="mt-8 flex justify-end">
+      <button type="submit" class="btn-primary">Save changes</button>
+    </div>
+  </form>
+</div>

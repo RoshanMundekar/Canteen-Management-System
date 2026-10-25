@@ -1,0 +1,14 @@
+{% extends "layouts/dashboard.html" %}
+{% block title %}{% block admin_title %}Administration{% endblock %}{% endblock %}
+{% block sidebar_brand %}{% include "partials/brand.html" with dark=True href="/adindex" tagline="Administration" %}{% endblock %}
+{% block sidebar_heading %}Management{% endblock %}
+{% block sidebar %}
+  {% include "partials/side_link.html" with href="/adindex" icon="chart" label="Dashboard" %}
+  {% include "partials/side_link.html" with href="/admenu" icon="food" label="Menu Management" %}
+  {% include "partials/side_link.html" with href="/addstaff" icon="chef" label="Staff Management" %}
+  {% include "partials/side_link.html" with href="/userinfo" icon="users" label="User Directory" %}
+  {% include "partials/side_link.html" with href="/userpament" icon="card" label="Payments & Invoices" %}
+  {% include "partials/side_link.html" with href="/viewfeedback" icon="chat" label="Feedback" %}
+{% endblock %}
+{% block role_label %}Administrator{% endblock %}
+{% block crumb %}Administration{% endblock %}

@@ -1,0 +1,66 @@
+{% comment %}Params: add_url, cart_url. Context: data1 (veg), data2 (non-veg), data3 (beverages), data4 (combos, optional){% endcomment %}
+<nav class="-mx-4 mb-8 overflow-x-auto px-4 sm:mx-0 sm:px-0" aria-label="Menu categories">
+  <div class="flex w-max gap-2">
+    <a href="#veg" class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-navy-500 hover:text-navy-800">Vegetarian</a>
+    <a href="#nonveg" class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-navy-500 hover:text-navy-800">Non-Vegetarian</a>
+    <a href="#beverages" class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-navy-500 hover:text-navy-800">Beverages</a>
+    {% if data4 %}<a href="#combos" class="rounded-full border border-gold-400 bg-gold-50 px-4 py-2 text-sm font-medium text-gold-700 hover:bg-gold-100">Combo Offers</a>{% endif %}
+    <a href="{{ cart_url }}" class="inline-flex items-center gap-2 rounded-full bg-navy-800 px-4 py-2 text-sm font-medium text-white hover:bg-navy-700">{% include "partials/icon.html" with name="cart" cls="h-4 w-4" %}View cart ({{ cartcount|default:0 }})</a>
+  </div>
+</nav>
+
+<section id="veg" class="scroll-mt-24">
+  <div class="mb-5 flex items-end justify-between border-b border-slate-200 pb-3">
+    <h2 class="font-serif text-2xl font-bold text-navy-900">Vegetarian</h2>
+    <span class="text-sm text-slate-500">Prepared in a separate veg kitchen</span>
+  </div>
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    {% for Dname1, Dprice1, Dabout1, Dimg1, Dcat1 in data1 %}
+      {% include "shared/dish_card.html" with name=Dname1 price=Dprice1 about=Dabout1 img=Dimg1 kind="veg" action=add_url forloop_id="v" %}
+    {% empty %}
+      <p class="col-span-full rounded-lg border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">No vegetarian dishes listed today.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="nonveg" class="mt-12 scroll-mt-24">
+  <div class="mb-5 flex items-end justify-between border-b border-slate-200 pb-3">
+    <h2 class="font-serif text-2xl font-bold text-navy-900">Non-Vegetarian</h2>
+  </div>
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    {% for Dname2, Dprice2, Dabout2, Dimg2, Dcat2 in data2 %}
+      {% include "shared/dish_card.html" with name=Dname2 price=Dprice2 about=Dabout2 img=Dimg2 kind="nonveg" action=add_url forloop_id="n" %}
+    {% empty %}
+      <p class="col-span-full rounded-lg border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">No non-vegetarian dishes listed today.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="beverages" class="mt-12 scroll-mt-24">
+  <div class="mb-5 flex items-end justify-between border-b border-slate-200 pb-3">
+    <h2 class="font-serif text-2xl font-bold text-navy-900">Beverages</h2>
+  </div>
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    {% for Dname3, Dprice3, Dabout3, Dimg3, Dcat3 in data3 %}
+      {% include "shared/dish_card.html" with name=Dname3 price=Dprice3 about=Dabout3 img=Dimg3 kind="bev" action=add_url forloop_id="b" %}
+    {% empty %}
+      <p class="col-span-full rounded-lg border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">No beverages listed today.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% if data4 %}
+<section id="combos" class="mt-12 scroll-mt-24">
+  <div class="mb-5 flex items-end justify-between border-b border-gold-300 pb-3">
+    <h2 class="font-serif text-2xl font-bold text-navy-900">Combo Offers</h2>
+    <span class="text-sm font-medium text-gold-700">Better value meals</span>
+  </div>
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    {% for Dname4, Dprice4, Dabout4, Dimg4, Dcat4 in data4 %}
+      {% include "shared/dish_card.html" with name=Dname4 price=Dprice4 about=Dabout4 img=Dimg4 kind="combo" action=add_url forloop_id="c" %}
+    {% empty %}
+      <p class="col-span-full rounded-lg border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">No combo offers right now.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

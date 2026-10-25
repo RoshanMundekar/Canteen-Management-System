@@ -1,0 +1,4 @@
+<a href="{{ href }}" class="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition {% if request.path == href %}bg-white/10 text-white shadow-inner{% else %}text-navy-200 hover:bg-white/5 hover:text-white{% endif %}">
+  {% include "partials/icon.html" with name=icon cls="h-5 w-5 shrink-0" %}<span>{{ label }}</span>
+  {% if request.path == href %}<span class="ml-auto h-1.5 w-1.5 rounded-full bg-gold-400"></span>{% endif %}
+</a>

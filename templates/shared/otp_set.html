@@ -1,0 +1,21 @@
+{% extends "layouts/auth.html" %}
+{% block title %}Set New Password{% endblock %}
+{% block badge %}Account recovery{% endblock %}
+{% block heading %}Set a new password{% endblock %}
+{% block subheading %}{% if usrmailid %}We sent a one-time password to <span class="font-medium text-slate-700">{{ usrmailid }}</span>.{% else %}Enter the OTP sent to your email and choose a new password.{% endif %}{% endblock %}
+{% block form %}
+<form action="/setpassword" method="post" class="space-y-5">
+  {% csrf_token %}
+  <div>
+    <label for="finalotp" class="field-label">One-time password</label>
+    <input id="finalotp" type="text" name="finalotp" required minlength="6" maxlength="6" inputmode="numeric" autocomplete="one-time-code" autofocus class="field !py-3 text-center text-lg tracking-[0.5em]" placeholder="••••••">
+  </div>
+  <div>
+    <label for="finalpass" class="field-label">New password</label>
+    <input id="finalpass" type="password" name="finalpass" required class="field !py-3" placeholder="Choose a new password" autocomplete="new-password">
+  </div>
+  <input type="hidden" name="usremails" value="{{ usrmailid }}">
+  <button type="submit" class="btn-primary w-full !py-3">Update password</button>
+</form>
+<p class="mt-6 text-center text-sm text-slate-500"><a href="{% block login_url %}/studlogin{% endblock %}" class="font-semibold text-navy-700 hover:underline">Back to sign in</a></p>
+{% endblock %}

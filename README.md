@@ -59,3 +59,14 @@ The project (`firstproject`) contains the following main applications:
 - Static and media files configuration included.
 
 "# Canteen-Management-System" 
+
+## Styling (Tailwind CSS)
+
+Pages use a precompiled stylesheet, `static/css/site.css`, built from `assets/tailwind.css`
+with the theme in `tailwind.config.js`. Shared layouts and partials live in `templates/`.
+After adding or changing Tailwind classes in any template, rebuild the CSS (requires Node.js):
+
+```bash
+npm install          # first time only
+npm run build:css    # or: npm run watch:css while editing
+```

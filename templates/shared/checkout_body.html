@@ -1,0 +1,60 @@
+{% comment %}Params: place_url, cart_url, card (True for card payment). Context: dishPrice{% endcomment %}
+<ol class="mb-8 flex items-center gap-2 text-xs font-medium sm:text-sm" aria-label="Progress">
+  <li class="flex items-center gap-2 text-emerald-700"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100">{% include "partials/icon.html" with name="check" cls="h-3.5 w-3.5" %}</span>Cart</li>
+  <li class="h-px w-6 bg-slate-300 sm:w-12"></li>
+  <li class="flex items-center gap-2 text-navy-800"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-navy-800 text-white">2</span>Details &amp; payment</li>
+  <li class="h-px w-6 bg-slate-300 sm:w-12"></li>
+  <li class="flex items-center gap-2 text-slate-400"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-200">3</span>Invoice</li>
+</ol>
+
+<form action="{{ place_url }}" method="post" class="grid gap-8 lg:grid-cols-3">
+  <input type="hidden" name="pmode" value="{% if card %}Card{% else %}Cash{% endif %}">
+  {% csrf_token %}
+  <div class="space-y-6 lg:col-span-2">
+    <section class="card p-5 sm:p-6">
+      <h2 class="font-serif text-lg font-bold text-navy-900">Billing details</h2>
+      <p class="mt-1 text-sm text-slate-500">Your invoice will be emailed to your registered email address.</p>
+      <div class="mt-6 grid gap-5 sm:grid-cols-2">
+        <div><label class="field-label" for="Fname">First name</label><input id="Fname" type="text" name="Fname" required class="field" placeholder="First name" autocomplete="given-name"></div>
+        <div><label class="field-label" for="Lname">Last name</label><input id="Lname" type="text" name="Lname" required class="field" placeholder="Last name" autocomplete="family-name"></div>
+        <div><label class="field-label" for="phoneno">Mobile number</label><input id="phoneno" type="tel" name="phoneno" required minlength="10" maxlength="10" pattern="[0-9]{10}" class="field" placeholder="10-digit mobile" autocomplete="tel"></div>
+        <div><label class="field-label" for="Uemail">Email address</label><input id="Uemail" type="email" name="Uemail" required class="field" placeholder="you@example.com" autocomplete="email"></div>
+      </div>
+    </section>
+
+    {% if card %}
+    <section class="card p-5 sm:p-6">
+      <div class="flex items-center justify-between">
+        <h2 class="font-serif text-lg font-bold text-navy-900">Card payment</h2>
+        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-700">{% include "partials/icon.html" with name="lock" cls="h-3.5 w-3.5" %}Secure</span>
+      </div>
+      <div class="mt-6 grid gap-5 sm:grid-cols-3">
+        <div class="sm:col-span-3"><label class="field-label" for="cardno">Debit card number</label><input id="cardno" type="text" inputmode="numeric" minlength="12" maxlength="12" required class="field tracking-widest" placeholder="12-digit card number" autocomplete="cc-number"></div>
+        <div class="sm:col-span-2"><label class="field-label" for="expiry">Expiry date</label><input id="expiry" type="text" required class="field" placeholder="MM/YYYY" autocomplete="cc-exp"></div>
+        <div><label class="field-label" for="cvv">CVV</label><input id="cvv" type="password" inputmode="numeric" minlength="3" maxlength="3" required class="field" placeholder="•••" autocomplete="cc-csc"></div>
+      </div>
+    </section>
+    {% else %}
+    <section class="card flex items-start gap-4 p-5 sm:p-6">
+      <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold-100 text-gold-700">{% include "partials/icon.html" with name="card" %}</span>
+      <div>
+        <h2 class="font-semibold text-navy-900">Pay at the counter</h2>
+        <p class="mt-1 text-sm text-slate-500">Pay in cash when you collect your order from the canteen counter.</p>
+      </div>
+    </section>
+    {% endif %}
+  </div>
+
+  <aside>
+    <div class="card sticky top-24 p-5 sm:p-6">
+      <h2 class="font-serif text-lg font-bold text-navy-900">Order total</h2>
+      <dl class="mt-5 space-y-3 text-sm">
+        <div class="flex justify-between"><dt class="text-slate-500">Subtotal</dt><dd class="font-medium">&#8377;{{ dishPrice }}</dd></div>
+        <div class="flex justify-between"><dt class="text-slate-500">Payment</dt><dd class="font-medium">{% if card %}Debit card{% else %}Cash at counter{% endif %}</dd></div>
+        <div class="flex justify-between border-t border-slate-200 pt-3 text-base"><dt class="font-semibold text-navy-900">Total payable</dt><dd class="font-bold text-navy-900">&#8377;{{ dishPrice }}</dd></div>
+      </dl>
+      <button type="submit" class="btn-gold mt-6 w-full !py-3">Place order</button>
+      <a href="{{ cart_url }}" class="mt-3 block text-center text-sm font-medium text-navy-700 hover:underline">Back to cart</a>
+    </div>
+  </aside>
+</form>

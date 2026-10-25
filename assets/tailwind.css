@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container-x { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .field-label { @apply block text-sm font-medium text-slate-700 mb-1.5; }
+  .field { @apply block w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 shadow-sm transition focus:border-navy-500 focus:outline-none focus:ring-2 focus:ring-navy-500/20; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50; }
+  .btn-primary { @apply btn bg-navy-800 text-white hover:bg-navy-700 focus:ring-navy-500; }
+  .btn-gold { @apply btn bg-gold-500 text-navy-950 hover:bg-gold-400 focus:ring-gold-500; }
+  .btn-outline { @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 focus:ring-navy-500; }
+  .btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-red-500; }
+  .card { @apply rounded-lg border border-slate-200 bg-white shadow-card; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.18em] text-gold-600; }
+  .table-wrap { @apply overflow-x-auto rounded-lg border border-slate-200 bg-white shadow-card; }
+  .table-base { @apply min-w-full divide-y divide-slate-200 text-sm; }
+  .table-base thead th { @apply bg-slate-50 px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500 whitespace-nowrap; }
+  .table-base tbody td { @apply px-4 py-3 text-slate-700 align-middle; }
+  .table-base tbody tr { @apply hover:bg-slate-50/70; }
+  .pg-btn { @apply inline-flex h-9 min-w-[2.25rem] items-center justify-center gap-1 rounded-md border border-slate-300 bg-white px-2.5 text-sm font-medium text-slate-700 transition hover:border-navy-400 hover:bg-navy-50; }
+  .pg-on { @apply border-navy-800 bg-navy-800 text-white hover:border-navy-800 hover:bg-navy-800; }
+  .pg-off { @apply cursor-not-allowed opacity-40 hover:border-slate-300 hover:bg-white; }
+}

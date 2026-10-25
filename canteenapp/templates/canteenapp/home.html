@@ -1,236 +1,185 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<title>Moder Canteen</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
-
-	<link rel="stylesheet" href="../static/canteenapp/css/open-iconic-bootstrap.min.css">
-	<link rel="stylesheet" href="../static/canteenapp/css/animate.css">
-
-	<link rel="stylesheet" href="../static/canteenapp/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="../static/canteenapp/css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="../static/canteenapp/css/magnific-popup.css">
-
-	<link rel="stylesheet" href="../static/canteenapp/css/aos.css">
-
-	<link rel="stylesheet" href="../static/canteenapp/css/ionicons.min.css">
-
-	<link rel="stylesheet" href="../static/canteenapp/css/bootstrap-datepicker.css">
-	<link rel="stylesheet" href="../static/canteenapp/css/jquery.timepicker.css">
-
-
-	<link rel="stylesheet" href="../static/canteenapp/css/flaticon.css">
-	<link rel="stylesheet" href="../static/canteenapp/css/icomoon.css">
-	<link rel="stylesheet" href="../static/canteenapp/css/style.css">
-
-
-	<style>
-		input,
-		select,
-		textarea {
-			color: #070707;
-			background-color: #070707;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Canteen - Modern College of Arts, Science & Commerce</title>
+  <meta name="description" content="Modern College Canteen: Fresh, hygienic, and affordable food for students, teachers, and visitors.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{500:'#f97316',600:'#ea580c'}},fontFamily:{sans:['Inter','system-ui']}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Inter',sans-serif;}
+    .hero-bg{background:linear-gradient(135deg,#0f0f0f 0%,#1a1a2e 50%,#16213e 100%);}
+    .card-hover{transition:all .3s ease;}.card-hover:hover{transform:translateY(-6px);box-shadow:0 25px 50px -12px rgba(249,115,22,.3);}
+    .nav-drop{opacity:0;visibility:hidden;transition:all .2s;}.group:hover .nav-drop{opacity:1;visibility:visible;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+    .anim{animation:fadeUp .8s ease-out forwards;}
+  </style>
 </head>
+<body class="bg-gray-950 text-white">
 
-<body>
-	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-		<div class="container">
-			<img src="../../static/canteenapp/images/moderncollege.jpg" width="100" height="80" alt="">
-			<a class="navbar-brand" href="/"> Modern<small> Canteen</small></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">Menu</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">Staff</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">About</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							Login
-						</a>
-						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-							<li><a class="dropdown-item" href="/studlogin">Student Login</a></li>
-							<li><a class="dropdown-item" href="/teacherlogin">Teachers Login</a></li>
-							<li><a class="dropdown-item" href="/stafflogin">Canteen Staff Login</a></li>
-							<li><a class="dropdown-item" href="/vistlogin">Visitors Login</a></li>
-						</ul>
-					</li>
-					<li class="nav-item"><a href="#" class="nav-link">Feedback</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- END nav -->
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-gray-950/95 backdrop-blur-md border-b border-orange-500/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center font-black text-white shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform">MC</div>
+        <div><div class="text-lg font-bold text-white">Modern <span class="text-orange-500">Canteen</span></div><div class="text-xs text-gray-500">Modern College, Pune</div></div>
+      </a>
+      <div class="hidden md:flex items-center space-x-1">
+        <a href="/" class="px-3 py-2 text-sm font-medium text-orange-400 bg-orange-500/10 rounded-lg border border-orange-500/30">Home</a>
+        <a href="#about" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">About</a>
+        <a href="#contact" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Contact</a>
+        <div class="relative group ml-2">
+          <button class="flex items-center space-x-1.5 px-4 py-2 text-sm font-semibold bg-orange-600 hover:bg-orange-500 text-white rounded-lg transition-colors">
+            <span>Login</span><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="nav-drop absolute right-0 top-full mt-2 w-52 bg-gray-900 border border-gray-700 rounded-xl shadow-2xl overflow-hidden">
+            <a href="/studlogin" class="flex items-center px-4 py-3 text-sm text-gray-300 hover:bg-orange-500/10 hover:text-orange-400 transition-colors">&#127891; Student Login</a>
+            <a href="/teacherlogin" class="flex items-center px-4 py-3 text-sm text-gray-300 hover:bg-orange-500/10 hover:text-orange-400 transition-colors">&#128104;&#8205;&#127979; Teacher Login</a>
+            <a href="/stafflogin" class="flex items-center px-4 py-3 text-sm text-gray-300 hover:bg-orange-500/10 hover:text-orange-400 transition-colors">&#128374; Staff Login</a>
+            <a href="/vistlogin" class="flex items-center px-4 py-3 text-sm text-gray-300 hover:bg-orange-500/10 hover:text-orange-400 transition-colors">&#128101; Visitor Login</a>
+            <a href="/adlogin" class="flex items-center px-4 py-3 text-sm text-gray-300 hover:bg-orange-500/10 hover:text-orange-400 transition-colors border-t border-gray-700">&#128737; Admin Login</a>
+          </div>
+        </div>
+      </div>
+      <button onclick="document.getElementById('mob').classList.toggle('hidden')" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mob" class="hidden md:hidden border-t border-gray-800 px-4 pb-4 pt-2 space-y-1">
+    <a href="/" class="block px-3 py-2 text-sm text-orange-400 bg-orange-500/10 rounded-lg">Home</a>
+    <a href="#about" class="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-lg">About</a>
+    <div class="pt-2 border-t border-gray-800 space-y-1">
+      <p class="px-3 py-1 text-xs text-gray-500 uppercase tracking-wider">Login As</p>
+      <a href="/studlogin" class="block px-3 py-2 text-sm text-gray-300 hover:text-orange-400 rounded-lg">Student</a>
+      <a href="/teacherlogin" class="block px-3 py-2 text-sm text-gray-300 hover:text-orange-400 rounded-lg">Teacher</a>
+      <a href="/stafflogin" class="block px-3 py-2 text-sm text-gray-300 hover:text-orange-400 rounded-lg">Canteen Staff</a>
+      <a href="/vistlogin" class="block px-3 py-2 text-sm text-gray-300 hover:text-orange-400 rounded-lg">Visitor</a>
+      <a href="/adlogin" class="block px-3 py-2 text-sm text-gray-300 hover:text-orange-400 rounded-lg">Admin</a>
+    </div>
+  </div>
+</nav>
 
-	<section class="home-slider owl-carousel">
+<!-- HERO -->
+<section class="hero-bg min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl"></div>
+  </div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center anim py-24">
+    <div class="inline-flex items-center px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full text-orange-400 text-sm font-medium mb-8">
+      <span class="w-2 h-2 bg-orange-400 rounded-full mr-2 animate-pulse"></span>
+      Modern College of Arts, Science & Commerce, Pune
+    </div>
+    <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black mb-6 leading-tight">
+      <span class="text-white">Modern</span><br>
+      <span class="bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent">Canteen</span>
+    </h1>
+    <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+      Fresh, hygienic, and affordable food for our college community. Order online, skip the queue, enjoy your meal.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/studlogin" class="px-8 py-4 bg-orange-600 hover:bg-orange-500 text-white font-bold text-lg rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 hover:scale-105">Order Now &#8594;</a>
+      <a href="#about" class="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-bold text-lg rounded-xl border border-white/20 hover:border-white/40 transition-all duration-200">Learn More</a>
+    </div>
+    <div class="mt-20 grid grid-cols-3 gap-8 max-w-md mx-auto">
+      <div class="text-center"><div class="text-3xl font-black text-orange-400">50+</div><div class="text-xs text-gray-500 mt-1">Menu Items</div></div>
+      <div class="text-center"><div class="text-3xl font-black text-orange-400">500+</div><div class="text-xs text-gray-500 mt-1">Daily Orders</div></div>
+      <div class="text-center"><div class="text-3xl font-black text-orange-400">4.9&#9733;</div><div class="text-xs text-gray-500 mt-1">Avg. Rating</div></div>
+    </div>
+  </div>
+</section>
 
-		<div class="slider-item" style="background-image: url(../static/canteenapp/images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row slider-text justify-content-center align-items-center">
+<!-- FEATURES -->
+<section class="py-20 bg-gray-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-white mb-4">Why Choose Modern Canteen?</h2>
+      <p class="text-gray-400 text-lg">Everything you need for a great dining experience on campus</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-8 card-hover text-center">
+        <div class="w-16 h-16 bg-orange-500/10 border border-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6 text-4xl">&#128203;</div>
+        <h3 class="text-xl font-bold text-white mb-3">Easy to Order</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Browse the menu, add to cart, and place your order in seconds from anywhere on campus.</p>
+      </div>
+      <div class="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-8 card-hover text-center">
+        <div class="w-16 h-16 bg-orange-500/10 border border-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6 text-4xl">&#8987;</div>
+        <h3 class="text-xl font-bold text-white mb-3">Time Saving</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">No more standing in long queues. Pre-order and pick up your food at the scheduled time.</p>
+      </div>
+      <div class="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-8 card-hover text-center">
+        <div class="w-16 h-16 bg-orange-500/10 border border-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6 text-4xl">&#127869;</div>
+        <h3 class="text-xl font-bold text-white mb-3">Quality Food</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Freshly prepared meals every day with highest hygiene standards and quality ingredients.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Our Menu</h1>
-						<p class="breadcrumbs"><span class="mr-2"><a href="/">Home</a></span> <span>Menu</span>
-						</p>
-					</div>
+<!-- ABOUT / SAFETY -->
+<section id="about" class="py-20 bg-gray-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full text-orange-400 text-sm font-medium mb-4">Our Commitment</div>
+      <h2 class="text-4xl font-bold text-white mb-4">Hygiene &amp; Safety First</h2>
+      <p class="text-gray-400 text-lg max-w-xl mx-auto">We strictly follow food safety guidelines to ensure every meal we serve is safe, healthy, and delicious.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-gray-800/60 border border-gray-700/50 rounded-2xl p-8 hover:border-green-500/40 transition-colors">
+        <div class="text-4xl mb-4">&#127807;</div>
+        <h3 class="text-lg font-bold text-white mb-3">Washed Produce</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">All fruits and vegetables are thoroughly washed before use to eliminate contaminants.</p>
+      </div>
+      <div class="bg-gray-800/60 border border-gray-700/50 rounded-2xl p-8 hover:border-blue-500/40 transition-colors">
+        <div class="text-4xl mb-4">&#129510;</div>
+        <h3 class="text-lg font-bold text-white mb-3">Hand Hygiene</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Staff always wash and sanitize hands before handling any food preparation.</p>
+      </div>
+      <div class="bg-gray-800/60 border border-gray-700/50 rounded-2xl p-8 hover:border-purple-500/40 transition-colors">
+        <div class="text-4xl mb-4">&#10024;</div>
+        <h3 class="text-lg font-bold text-white mb-3">Clean Kitchen</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Kitchen surfaces and equipment are thoroughly cleaned after each food preparation cycle.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-section">
-		<div class="container">
-			<h1 style="color:orangered;font-size: 50px;"><B>
-					<center>About us</center>
-				</B></h1>
-			<div id="Safety">
-				<marquee id="marquee1"><b>Safety Measures we take</b></marquee>
-			</div>
-			<div class="row align-items-center">
-				<div class="col-lg-5 px-5 mx-auto"><img src="../../static/canteenapp/images/aboutusimg1.jpeg" alt=""
-						class="img-fluid mb-4 mb-lg-0"></div>
-				<div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
-					<h2 class="font-weight-light text-danger"><b>Wash fruits and vegetables before use.</b></h2>
-
-				</div>
-			</div>
-
-			<div class="bg-white py-5">
-				<div class="container py-5">
-					<div class="row align-items-center mb-5">
-						<div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
-							<h2 class="font-weight-light text-danger"><b>Always, always, always wash your hands.</b>
-							</h2>
-						</div>
-						<div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img
-								src="../../static/canteenapp/images/aboutusimg2.jpeg" alt=""
-								class="img-fluid mb-4 mb-lg-0"></div>
-					</div>
-					<div class="row align-items-center">
-						<div class="col-lg-5 px-5 mx-auto"><img src="../../static/canteenapp/images/aboutusimg3.webp"
-								alt="" class="img-fluid mb-4 mb-lg-0"></div>
-						<div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
-							<h2 class="font-weight-light text-danger"><b>Clean the kitchen after each food
-									preparation.</b></h2>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</section>
-
-
-	<footer class="ftco-footer ftco-section img">
-		<div class="overlay"></div>
-		<br>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="ftco-footer-widget mb-4">
-						<a class="navbar-brand" href="/adindex">Modern<small>Canteen</small></a>
-						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5"
-							style="margin-left: 20%;">
-							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col">
-					<div class="ftco-footer-widget mb-4 ml-md-4">
-						<h2 class="ftco-heading-2">Services</h2>
-						<ul class="navbar-nav ml-auto">
-							<li class="nav-item"><a href="/admenu" class="nav-link">Menu</a></li>
-							<li class="nav-item"><a href="/addstaff" class="nav-link">Staff</a></li>
-							<li class="nav-item"><a href="/viewfeedback" class="nav-link">Feedback</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Have a Questions?</h2>
-						<div class="block-23 mb-3">
-							<ul>
-								<li><span class="icon icon-map-marker"></span><span class="text">Modern College of
-										Arts,Science and Commerce Shivajinagar Pune-05</span></li>
-								<li><a href="#"><span class="icon icon-phone"></span><span
-											class="text">9858358823/9730133445/7780001782</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span
-											class="text">vaishnavivaidya129@gmail.com</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span
-											class="text">pragya.january2001@gmail.com</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span
-											class="text">manasvisawant05@gmail.com</span></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;
-						<script>document.write(new Date().getFullYear());</script>2023 All rights reserved <i
-							class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-							target="_blank">By:Modern College Students</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-
-
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-				stroke="#F96D00" />
-		</svg></div>
-
-	<script>
-		$('#myModal').on('shown.bs.modal', function () {
-			$('#myInput').trigger('focus')
-		})
-	</script>
-
-	<script src="../static/canteenapp/js/jquery.min.js"></script>
-	<script src="../static/canteenapp/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="../static/canteenapp/js/popper.min.js"></script>
-	<script src="../static/canteenapp/js/bootstrap.min.js"></script>
-	<script src="../static/canteenapp/js/jquery.easing.1.3.js"></script>
-	<script src="../static/canteenapp/js/jquery.waypoints.min.js"></script>
-	<script src="../static/canteenapp/js/jquery.stellar.min.js"></script>
-	<script src="../static/canteenapp/js/owl.carousel.min.js"></script>
-	<script src="../static/canteenapp/js/jquery.magnific-popup.min.js"></script>
-	<script src="../static/canteenapp/js/aos.js"></script>
-	<script src="../static/canteenapp/js/jquery.animateNumber.min.js"></script>
-	<script src="../static/canteenapp/js/bootstrap-datepicker.js"></script>
-	<script src="../static/canteenapp/js/jquery.timepicker.min.js"></script>
-	<script src="../static/canteenapp/js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="../static/canteenapp/js/google-map.js"></script>
-	<script src="../static/canteenapp/js/main.js"></script>
-
+<!-- FOOTER -->
+<footer id="contact" class="bg-gray-900 border-t border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div>
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center font-black text-white">MC</div>
+          <div><div class="font-bold text-white text-lg">Modern Canteen</div><div class="text-xs text-gray-500">Modern College, Pune</div></div>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-6">Serving the Modern College community with fresh, hygienic, and affordable meals.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-bold text-lg mb-6">Quick Links</h4>
+        <ul class="space-y-3">
+          <li><a href="/admenu" class="text-gray-400 hover:text-orange-400 text-sm transition-colors">Our Menu</a></li>
+          <li><a href="/viewfeedback" class="text-gray-400 hover:text-orange-400 text-sm transition-colors">Feedback</a></li>
+          <li><a href="/adlogin" class="text-gray-400 hover:text-orange-400 text-sm transition-colors">Admin Panel</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold text-lg mb-6">Contact</h4>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li>&#128205; Modern College of Arts, Science and Commerce, Shivajinagar, Pune - 411005</li>
+          <li>&#128222; 9858358823 / 9730133445 / 7780001782</li>
+          <li>&#128140; vaishnavivaidya129@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-gray-800 py-6 text-center">
+    <p class="text-gray-500 text-sm">&copy; <script>document.write(new Date().getFullYear())</script> Modern Canteen, Modern College Pune. All rights reserved.</p>
+  </div>
+</footer>
 </body>
-
 </html>

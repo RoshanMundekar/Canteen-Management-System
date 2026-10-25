@@ -1,0 +1,23 @@
+{% load pagination_tags %}{% comment %}
+Pager for a Django Page object.
+Params: page (required), param (query name, default "page"), anchor (section id to jump back to),
+noun (what is being counted, default "records"), boxed (True when not inside a .table-wrap card).
+{% endcomment %}{% if page.paginator.count %}
+<nav aria-label="Pagination" class="flex flex-col items-center justify-between gap-3 px-4 py-3 text-sm sm:flex-row sm:px-5 {% if boxed %}card mt-5{% else %}border-t border-slate-200{% endif %}">
+  <p class="text-slate-500">Showing <span class="font-medium text-slate-900">{{ page.start_index }}&ndash;{{ page.end_index }}</span> of <span class="font-medium text-slate-900">{{ page.paginator.count }}</span> {{ noun|default:"records" }}</p>
+  {% if page.has_other_pages %}
+  <div class="flex items-center gap-1">
+    {% if page.has_previous %}<a href="{% page_url param page.previous_page_number anchor %}" class="pg-btn" aria-label="Previous page"><span aria-hidden="true">&lsaquo;</span><span class="hidden sm:inline">Prev</span></a>{% else %}<span class="pg-btn pg-off" aria-hidden="true">&lsaquo;<span class="hidden sm:inline">Prev</span></span>{% endif %}
+    <span class="px-2 font-medium text-slate-600 sm:hidden">Page {{ page.number }} of {{ page.paginator.num_pages }}</span>
+    <span class="hidden items-center gap-1 sm:flex">
+      {% elided_pages page as pages %}{% for n in pages %}
+        {% if n == page.number %}<span class="pg-btn pg-on" aria-current="page">{{ n }}</span>
+        {% elif n == page.paginator.ELLIPSIS %}<span class="px-1 text-slate-400">&hellip;</span>
+        {% else %}<a href="{% page_url param n anchor %}" class="pg-btn" aria-label="Page {{ n }}">{{ n }}</a>{% endif %}
+      {% endfor %}
+    </span>
+    {% if page.has_next %}<a href="{% page_url param page.next_page_number anchor %}" class="pg-btn" aria-label="Next page"><span class="hidden sm:inline">Next</span><span aria-hidden="true">&rsaquo;</span></a>{% else %}<span class="pg-btn pg-off" aria-hidden="true"><span class="hidden sm:inline">Next</span>&rsaquo;</span>{% endif %}
+  </div>
+  {% endif %}
+</nav>
+{% endif %}

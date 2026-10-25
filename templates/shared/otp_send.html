@@ -1,0 +1,16 @@
+{% extends "layouts/auth.html" %}
+{% block title %}Forgot Password{% endblock %}
+{% block badge %}Account recovery{% endblock %}
+{% block heading %}Forgot your password?{% endblock %}
+{% block subheading %}Enter your registered email address and we'll send you a 6-digit one-time password.{% endblock %}
+{% block form %}
+<form action="/sendotp" method="post" class="space-y-5">
+  {% csrf_token %}
+  <div>
+    <label for="otpemail" class="field-label">Registered email</label>
+    <input id="otpemail" type="email" name="otpemail" required autofocus class="field !py-3" placeholder="you@example.com" autocomplete="email">
+  </div>
+  <button type="submit" class="btn-primary w-full !py-3">Send OTP</button>
+</form>
+<p class="mt-6 text-center text-sm text-slate-500">Remembered it? <a href="{% block login_url %}/studlogin{% endblock %}" class="font-semibold text-navy-700 hover:underline">Back to sign in</a></p>
+{% endblock %}

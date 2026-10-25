@@ -1,211 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layouts/staff.html" %}
+{% load static %}
+{% block title %}Kitchen Overview{% endblock %}
+{% block page_title %}Overview{% endblock %}
 
-<head>
-	<title>Modern Canteen</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block content %}
+<section class="relative overflow-hidden rounded-xl bg-navy-900 text-white">
+  <img src="{% static 'canteenapp/images/bg_2.jpg' %}" alt="" class="absolute inset-0 h-full w-full object-cover opacity-15">
+  <div class="relative flex flex-col gap-6 p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
+    <div>
+      <p class="eyebrow !text-gold-400">Kitchen console</p>
+      <h2 class="mt-2 font-serif text-2xl font-bold sm:text-3xl">Good to see you, <span class="capitalize">{{ request.session.uname }}</span></h2>
+      <p class="mt-2 max-w-xl text-sm text-navy-100">Review incoming orders, set an estimated ready time, and the customer is notified by email automatically.</p>
+    </div>
+    <a href="/takeorder" class="btn-gold shrink-0">View incoming orders {% include "partials/icon.html" with name="arrow" cls="h-4 w-4" %}</a>
+  </div>
+</section>
 
-	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
-
-	{% load static %}
-	<link rel="stylesheet" href="{% static 'studentapp/css/open-iconic-bootstrap.min.css' %}">
-	<link rel="stylesheet" href="{% static 'studentapp/css/animate.css' %}">
-
-	<link rel="stylesheet" href="{% static 'studentapp/css/owl.carousel.min.css' %}">
-	<link rel="stylesheet" href="{% static 'studentapp/css/owl.theme.default.min.css' %}">
-	<link rel="stylesheet" href="{% static 'studentapp/css/magnific-popup.css' %}">
-
-	<link rel="stylesheet" href="{% static 'studentapp/css/aos.css' %}">
-
-	<link rel="stylesheet" href="{% static 'studentapp/css/ionicons.min.css' %}">
-
-	<link rel="stylesheet" href="{% static 'studentapp/css/bootstrap-datepicker.css' %}">
-	<link rel="stylesheet" href="{% static 'studentapp/css/jquery.timepicker.css' %}">
-
-
-	<link rel="stylesheet" href="{% static 'studentapp/css/flaticon.css' %}">
-	<link rel="stylesheet" href="{% static 'studentapp/css/icomoon.css' %}">
-	<link rel="stylesheet" href="{% static 'studentapp/css/style.css' %}">
-</head>
-
-<body>
-	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-		<div class="container">
-			<img src="../../static/canteenStaff/images/moderncollege.jpg" width="100" height="80" alt="">
-			<a class="navbar-brand" href="/staffindex"> Modern<small> Canteen</small></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="/staffindex" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="/takeorder" class="nav-link">Orders</a></li>
-					<li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
-				</ul>
-			</div>
-	</nav>
-	<!-- END nav -->
-
-	<section class="home-slider owl-carousel">
-
-		<div class="slider-item" style="background-image: url(../../static/studentapp/images/carousel1.webp);background-repeat: no-repeat;
-		background-attachment: fixed;background-size: 100% 100%;" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row slider-text justify-content-center align-items-center">
-
-				</div>
-			</div>
-		</div>
-
-		<div class="slider-item" style="background-image: url(../../static/studentapp/images/image1.jpg);background-repeat: no-repeat;
-		background-attachment: fixed;background-size: cover;" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row slider-text justify-content-center align-items-center">
-
-				</div>
-			</div>
-		</div>
-
-		<div class="slider-item" style="background-image: url(../../static/studentapp/images/vadapav.jpg);background-repeat: no-repeat;
-		background-attachment: fixed;background-size: cover" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row slider-text justify-content-center align-items-center">
-
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-section ftco-services">
-		<div class="container">
-			<br><br>
-			<div class="row">
-				<div class="col-md-4 ftco-animate">
-					<div class="media d-block text-center block-6 services">
-						<div class="icon d-flex justify-content-center align-items-center mb-5">
-							<span class="flaticon-choices"></span>
-						</div>
-						<div class="media-body">
-							<h3 class="heading">Easy to Order</h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 ftco-animate">
-					<div class="media d-block text-center block-6 services">
-						<div class="icon d-flex justify-content-center align-items-center mb-5">
-							<img src="../../static/canteenapp/images/clock.png" width="50" height="50" alt="">
-						</div>
-						<div class="media-body">
-							<h3 class="heading">Time Saving</h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 ftco-animate">
-					<div class="media d-block text-center block-6 services">
-						<div class="icon d-flex justify-content-center align-items-center mb-5">
-							<img src="../../static/canteenapp/images/food.png" width="50" height="50" alt="">
-						</div>
-						<div class="media-body">
-							<h3 class="heading">Quality Food</h3>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<footer class="ftco-footer ftco-section img" style="padding-bottom: 0rem;">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="ftco-footer-widget mb-4">
-						<a class="navbar-brand" href="/adindex">Modern<small>Canteen</small></a>
-						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5"
-							style="margin-left: 20%;">
-							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col">
-					<div class="ftco-footer-widget mb-4 ml-md-4">
-						<h2 class="ftco-heading-2">useful links</h2>
-						<ul class="navbar-nav ml-auto">
-							<li class="nav-item active"><a href="/staffindex" class="nav-link">Home</a></li>
-							<li class="nav-item"><a href="/takeorder" class="nav-link">Orders</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Have a Questions?</h2>
-						<div class="block-23 mb-3">
-							<ul>
-								<li><span class="icon icon-map-marker"></span><span class="text">Modern College of
-										Arts,Science and Commerce Shivajinagar Pune-05</span></li>
-								<li><a href="#"><span class="icon icon-phone"></span><span
-											class="text">9858358823/9730133445/7780001782</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span
-											class="text">vaishnavivaidya129@gmail.com</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span
-											class="text">pragya.january2001@gmail.com</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span
-											class="text">manasvisawant05@gmail.com</span></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="text-center">
-				<p style="padding-bottom: 0rem;padding-top: 0rem;">
-					Copyright &copy;
-					<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="icon-heart"
-						aria-hidden="true"></i> by <a href="#" target="_blank">By:Modern College Students</a>
-				</p>
-			</div>
-		</div>
-	</footer>
-
-
-
-
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-				stroke="#F96D00" />
-		</svg></div>
-
-
-	<script src="../static/studentapp/js/jquery.min.js"></script>
-	<script src="../static/studentapp/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="../static/studentapp/js/popper.min.js"></script>
-	<script src="../static/studentapp/js/bootstrap.min.js"></script>
-	<script src="../static/studentapp/js/jquery.easing.1.3.js"></script>
-	<script src="../static/studentapp/js/jquery.waypoints.min.js"></script>
-	<script src="../static/studentapp/js/jquery.stellar.min.js"></script>
-	<script src="../static/studentapp/js/owl.carousel.min.js"></script>
-	<script src="../static/studentapp/js/jquery.magnific-popup.min.js"></script>
-	<script src="../static/studentapp/js/aos.js"></script>
-	<script src="../static/studentapp/js/jquery.animateNumber.min.js"></script>
-	<script src="../static/studentapp/js/bootstrap-datepicker.js"></script>
-	<script src="../static/studentapp/js/jquery.timepicker.min.js"></script>
-	<script src="../static/studentapp/js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="../static/studentapp/js/google-map.js"></script>
-	<script src="../static/studentapp/js/main.js"></script>
-
-</body>
-
-</html>
+<div class="mt-8 grid gap-5 md:grid-cols-3">
+  <div class="card p-5">
+    <span class="flex h-10 w-10 items-center justify-center rounded-md bg-navy-50 text-navy-700">{% include "partials/icon.html" with name="receipt" %}</span>
+    <h3 class="mt-4 font-semibold text-navy-900">1. Review the order</h3>
+    <p class="mt-1 text-sm text-slate-500">Each card shows the customer, dish and quantity.</p>
+  </div>
+  <div class="card p-5">
+    <span class="flex h-10 w-10 items-center justify-center rounded-md bg-gold-50 text-gold-700">{% include "partials/icon.html" with name="clock" %}</span>
+    <h3 class="mt-4 font-semibold text-navy-900">2. Set a ready time</h3>
+    <p class="mt-1 text-sm text-slate-500">Choose when the order will be ready for collection.</p>
+  </div>
+  <div class="card p-5">
+    <span class="flex h-10 w-10 items-center justify-center rounded-md bg-emerald-50 text-emerald-700">{% include "partials/icon.html" with name="mail" %}</span>
+    <h3 class="mt-4 font-semibold text-navy-900">3. Accept &amp; notify</h3>
+    <p class="mt-1 text-sm text-slate-500">The customer receives an email with the ready time.</p>
+  </div>
+</div>
+{% endblock %}

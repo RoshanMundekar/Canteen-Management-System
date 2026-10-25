@@ -1,0 +1,39 @@
+{% comment %}Params: action, login_url, id_label (renders Uaddres as an ID field), address (renders Uaddres as an address textarea){% endcomment %}
+<form action="{{ action }}" method="post" class="space-y-5">
+  {% csrf_token %}
+  <div>
+    <label for="reg-name" class="field-label">Full name</label>
+    <input id="reg-name" type="text" name="Name" required class="field" placeholder="As per college records" autocomplete="name">
+  </div>
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for="reg-email" class="field-label">Email address</label>
+      <input id="reg-email" type="email" name="uemail" required class="field" placeholder="you@example.com" autocomplete="email">
+    </div>
+    <div>
+      <label for="reg-mobile" class="field-label">Mobile number</label>
+      <input id="reg-mobile" type="tel" name="mobileno" required minlength="10" maxlength="10" pattern="[0-9]{10}" class="field" placeholder="10-digit mobile" autocomplete="tel">
+    </div>
+  </div>
+  {% if id_label %}
+  <div>
+    <label for="reg-id" class="field-label">{{ id_label }}</label>
+    <input id="reg-id" type="text" name="Uaddres" required class="field" placeholder="e.g. 2024CS001">
+  </div>
+  {% elif address %}
+  <div>
+    <label for="reg-address" class="field-label">Address</label>
+    <textarea id="reg-address" name="Uaddres" required rows="3" class="field resize-none" placeholder="Office / residential address"></textarea>
+  </div>
+  {% endif %}
+  <div>
+    <label for="reg-pass" class="field-label">Password</label>
+    <input id="reg-pass" type="password" name="Upass" required minlength="4" class="field" placeholder="Create a password" autocomplete="new-password">
+  </div>
+  <label class="flex items-start gap-3 text-sm text-slate-600">
+    <input type="checkbox" required class="mt-0.5 rounded border-slate-300 text-navy-700 focus:ring-navy-500">
+    <span>I confirm the details above are accurate and agree to the canteen's terms of use.</span>
+  </label>
+  <button type="submit" class="btn-primary w-full !py-3">Create account</button>
+</form>
+<p class="mt-6 text-center text-sm text-slate-500">Already registered? <a href="{{ login_url }}" class="font-semibold text-navy-700 hover:underline">Sign in</a></p>

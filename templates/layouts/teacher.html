@@ -1,0 +1,3 @@
+{% extends "layouts/portal.html" %}
+{% block eyebrow %}Faculty Portal{% endblock %}
+{% block portal_nav %}{% include "partials/portal_nav.html" with role="Faculty Portal" home="/teaherindex" menu="/teachermenu" orders="/teacherinvoicehistory" feedback="/teacherfeedback" cart="/teachercartdata" profile="/teacherprofile" %}{% endblock %}

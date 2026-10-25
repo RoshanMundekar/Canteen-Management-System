@@ -1,0 +1,42 @@
+<footer class="mt-auto bg-navy-950 text-navy-200">
+  <div class="h-1 bg-gradient-to-r from-gold-600 via-gold-400 to-gold-600"></div>
+  <div class="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="sm:col-span-2 lg:col-span-1">
+      {% include "partials/brand.html" with dark=True %}
+      <p class="mt-4 text-sm leading-relaxed text-navy-300">The official dining service of Modern College of Arts, Science and Commerce, serving fresh, hygienic and affordable meals to our students, faculty and visitors.</p>
+    </div>
+    <div>
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-white">Portals</h3>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        <li><a href="/studlogin" class="hover:text-gold-400">Student Portal</a></li>
+        <li><a href="/teacherlogin" class="hover:text-gold-400">Faculty Portal</a></li>
+        <li><a href="/vistlogin" class="hover:text-gold-400">Visitor Portal</a></li>
+        <li><a href="/stafflogin" class="hover:text-gold-400">Canteen Staff</a></li>
+        <li><a href="/adlogin" class="hover:text-gold-400">Administration</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-white">Explore</h3>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        <li><a href="/#menu" class="hover:text-gold-400">Today's Menu</a></li>
+        <li><a href="/#standards" class="hover:text-gold-400">Food Safety Standards</a></li>
+        <li><a href="/#timings" class="hover:text-gold-400">Service Hours</a></li>
+        <li><a href="/#contact" class="hover:text-gold-400">Contact Us</a></li>
+      </ul>
+    </div>
+    <div id="contact">
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-white">Contact</h3>
+      <ul class="mt-4 space-y-3 text-sm">
+        <li class="flex gap-3">{% include "partials/icon.html" with name="map" cls="mt-0.5 h-4 w-4 shrink-0 text-gold-400" %}<span>Modern College of Arts, Science and Commerce, Shivajinagar, Pune – 411005</span></li>
+        <li class="flex gap-3">{% include "partials/icon.html" with name="phone" cls="mt-0.5 h-4 w-4 shrink-0 text-gold-400" %}<span>9858358823 / 9730133445</span></li>
+        <li class="flex gap-3">{% include "partials/icon.html" with name="clock" cls="mt-0.5 h-4 w-4 shrink-0 text-gold-400" %}<span>Mon – Sat, 8:00 AM – 6:00 PM</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="container-x flex flex-col gap-2 py-5 text-xs text-navy-300 sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; <span data-year></span> Modern College of Arts, Science and Commerce. All rights reserved.</p>
+      <p>Canteen Management System &middot; Developed by Modern College Students</p>
+    </div>
+  </div>
+</footer>

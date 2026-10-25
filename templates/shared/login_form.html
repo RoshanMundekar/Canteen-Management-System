@@ -1,0 +1,33 @@
+{% comment %}Params: action, id_name, id_label, id_type, id_placeholder, register_url (optional), forgot (bool){% endcomment %}
+<form action="{{ action }}" method="post" class="space-y-5">
+  {% csrf_token %}
+  <div>
+    <label for="login-id" class="field-label">{{ id_label }}</label>
+    <input id="login-id" type="{{ id_type|default:'text' }}" name="{{ id_name }}" required autofocus class="field !py-3" placeholder="{{ id_placeholder }}" autocomplete="username">
+  </div>
+  <div>
+    <div class="flex items-center justify-between">
+      <label for="login-pass" class="field-label">Password</label>
+      {% if forgot %}<a href="/sendotp" class="mb-1.5 text-sm font-medium text-navy-700 hover:underline">Forgot password?</a>{% endif %}
+    </div>
+    <div class="relative">
+      <input id="login-pass" type="password" name="password" required class="field !py-3 pr-16" placeholder="Enter your password" autocomplete="current-password">
+      <button type="button" onclick="var p=document.getElementById('login-pass');p.type=p.type==='password'?'text':'password';this.textContent=p.type==='password'?'Show':'Hide';" class="absolute inset-y-0 right-0 px-4 text-xs font-semibold text-slate-500 hover:text-navy-700">Show</button>
+    </div>
+  </div>
+  <button type="submit" class="btn-primary w-full !py-3">Sign in</button>
+</form>
+{% if register_url %}
+<p class="mt-6 text-center text-sm text-slate-500">New here? <a href="{{ register_url }}" class="font-semibold text-navy-700 hover:underline">Create an account</a></p>
+{% endif %}
+
+<div class="mt-10 border-t border-slate-200 pt-6">
+  <p class="text-center text-xs font-semibold uppercase tracking-wider text-slate-400">Other portals</p>
+  <div class="mt-3 flex flex-wrap justify-center gap-2 text-sm">
+    {% if action != "/studlogin" %}<a href="/studlogin" class="rounded-full border border-slate-200 px-3 py-1 text-slate-600 hover:border-navy-400 hover:text-navy-800">Student</a>{% endif %}
+    {% if action != "/teacherlogin" %}<a href="/teacherlogin" class="rounded-full border border-slate-200 px-3 py-1 text-slate-600 hover:border-navy-400 hover:text-navy-800">Faculty</a>{% endif %}
+    {% if action != "/vistlogin" %}<a href="/vistlogin" class="rounded-full border border-slate-200 px-3 py-1 text-slate-600 hover:border-navy-400 hover:text-navy-800">Visitor</a>{% endif %}
+    {% if action != "/stafflogin" %}<a href="/stafflogin" class="rounded-full border border-slate-200 px-3 py-1 text-slate-600 hover:border-navy-400 hover:text-navy-800">Staff</a>{% endif %}
+    {% if action != "/adlogin" %}<a href="/adlogin" class="rounded-full border border-slate-200 px-3 py-1 text-slate-600 hover:border-navy-400 hover:text-navy-800">Admin</a>{% endif %}
+  </div>
+</div>

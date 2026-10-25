@@ -1,0 +1,7 @@
+{% load static %}<a href="{{ href|default:'/' }}" class="flex items-center gap-3 min-w-0">
+  <img src="{% static 'canteenapp/images/moderncollege.jpg' %}" alt="Modern College crest" class="h-11 w-11 shrink-0 rounded-full bg-white object-cover ring-2 {% if dark %}ring-gold-500/60{% else %}ring-navy-100{% endif %}">
+  <span class="min-w-0 leading-tight">
+    <span class="block truncate font-serif text-lg font-bold {% if dark %}text-white{% else %}text-navy-900{% endif %}">Modern Canteen</span>
+    <span class="block truncate text-[11px] font-medium uppercase tracking-wider {% if dark %}text-navy-200{% else %}text-slate-500{% endif %}">{{ tagline|default:"Modern College · Pune" }}</span>
+  </span>
+</a>

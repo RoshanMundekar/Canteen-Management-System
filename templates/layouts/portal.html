@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% block portal_nav %}{% endblock %}
+
+<!-- Page heading band -->
+<section class="relative overflow-hidden bg-gradient-to-br from-navy-800 via-navy-800 to-navy-700 text-white">
+  <div class="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-gold-500/10"></div>
+  <div class="container-x relative py-8 sm:py-10">
+    <p class="eyebrow !text-gold-400">{% block eyebrow %}Canteen Portal{% endblock %}</p>
+    <h1 class="mt-2 font-serif text-2xl font-bold sm:text-3xl lg:text-4xl">{% block page_title %}{% endblock %}</h1>
+    <p class="mt-2 max-w-2xl text-sm text-navy-100 sm:text-base">{% block page_subtitle %}{% endblock %}</p>
+  </div>
+</section>
+
+<main class="flex-1">
+  <div class="container-x py-8 sm:py-10">
+    {% include "partials/messages.html" %}
+    {% block content %}{% endblock %}
+  </div>
+</main>
+
+{% include "partials/footer.html" %}
+{% endblock %}

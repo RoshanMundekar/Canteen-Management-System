@@ -1,0 +1,32 @@
+{% comment %}Params: menu_url. Context: invoicedata (Page of (pdfname, pdfdates)){% endcomment %}
+<div class="table-wrap">
+  <table class="table-base">
+    <thead>
+      <tr><th>#</th><th>Invoice</th><th>Order date</th><th class="!text-right">Action</th></tr>
+    </thead>
+    <tbody class="divide-y divide-slate-100">
+      {% for pdfname, pdfdates in invoicedata %}
+      <tr>
+        <td class="text-slate-400">{{ invoicedata.start_index|add:forloop.counter0 }}</td>
+        <td>
+          <div class="flex items-center gap-3">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-red-50 text-red-600">{% include "partials/icon.html" with name="receipt" cls="h-5 w-5" %}</span>
+            <span class="max-w-[12rem] truncate font-medium text-slate-900 sm:max-w-xs">{{ pdfname|cut:"media/Invoices/" }}</span>
+          </div>
+        </td>
+        <td class="whitespace-nowrap">{{ pdfdates }}</td>
+        <td class="text-right"><a href="/{{ pdfname }}" download class="btn-outline !px-3 !py-1.5">{% include "partials/icon.html" with name="download" cls="h-4 w-4" %}<span class="hidden sm:inline">Download</span></a></td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" class="!py-14 text-center">
+          <p class="font-semibold text-navy-900">No orders yet</p>
+          <p class="mt-1 text-sm text-slate-500">Invoices for your orders will appear here.</p>
+          <a href="{{ menu_url }}" class="btn-primary mt-5">Order now</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% include "partials/pagination.html" with page=invoicedata noun="invoices" %}
+</div>

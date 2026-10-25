@@ -1,0 +1,12 @@
+{
+  "name": "modern-canteen-ui",
+  "private": true,
+  "description": "Builds the compiled Tailwind stylesheet served by Django (static/css/site.css).",
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/tailwind.css -o ./static/css/site.css --minify",
+    "watch:css": "tailwindcss -i ./assets/tailwind.css -o ./static/css/site.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

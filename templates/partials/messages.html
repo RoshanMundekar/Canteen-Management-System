@@ -1,0 +1,11 @@
+{% if messages %}
+<div class="space-y-3 {{ wrap|default:'mb-6' }}" role="status">
+  {% for message in messages %}
+  <div data-alert class="flex items-start gap-3 rounded-md border px-4 py-3 text-sm {% if message.tags == 'error' %}border-red-200 bg-red-50 text-red-800{% elif message.tags == 'warning' %}border-amber-200 bg-amber-50 text-amber-800{% else %}border-emerald-200 bg-emerald-50 text-emerald-800{% endif %}">
+    {% if message.tags == 'error' %}{% include "partials/icon.html" with name="x" cls="mt-0.5 h-4 w-4 shrink-0" %}{% else %}{% include "partials/icon.html" with name="check" cls="mt-0.5 h-4 w-4 shrink-0" %}{% endif %}
+    <p class="flex-1">{{ message }}</p>
+    <button type="button" data-dismiss class="opacity-60 hover:opacity-100" aria-label="Dismiss">{% include "partials/icon.html" with name="x" cls="h-4 w-4" %}</button>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

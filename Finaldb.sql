@@ -15,6 +15,17 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`canteendb` /*!40100 DEFAULT CHARACTER S
 
 USE `canteendb`;
 
+/*Table structure for table `foodrecommend` (purchase history used by the visitor recommendations) */
+
+CREATE TABLE IF NOT EXISTS `foodrecommend` (
+  `frId` int(255) NOT NULL auto_increment,
+  `uid` int(255) NOT NULL,
+  `dishId` int(255) NOT NULL,
+  `dishquantity` int(255) NOT NULL default 1,
+  PRIMARY KEY  (`frId`),
+  KEY `uid` (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 /*Table structure for table `invoicetbl` */
 
 DROP TABLE IF EXISTS `invoicetbl`;
